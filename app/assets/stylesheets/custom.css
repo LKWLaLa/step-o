@@ -1,0 +1,23 @@
+#landing {
+  background-image: url('/assets/cover.jpg');
+  background-size: cover;
+  color: white;
+}
+
+.heading {
+  text-align: left;
+  padding-bottom: .5em;
+  color: gray;
+}
+
+  
+
+.col-md-4 well {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.checkbox-inline.no_indent {
+  margin-left: 0;
+  margin-right: 20px;
+}
