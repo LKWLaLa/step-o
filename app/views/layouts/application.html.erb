@@ -50,7 +50,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
 
-                <%# if logged_in? %>
+                <% if user_signed_in? %>
 
                      <ul class="nav navbar-nav navbar-right">
                     
@@ -61,12 +61,12 @@
                         <a href="/videos">My Videos</a>
                     </li>
                     <li>
-                      <button class="btn btn-success navbar-btn"><a href="/logout" style="color: white; text-decoration: none;">Log Out</a></button>
+                      <button class="btn btn-success navbar-btn"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></button>
                     </li>
                 </ul>
             </div>
 
-              <%# end %> 
+              <%end %> 
 
         
        

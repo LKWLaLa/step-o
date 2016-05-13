@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-message">
-                        <%# if !logged_in? %>
+                        <% if !user_signed_in? %>
                         <h1>Step-O</h1>
                         <h3>Keep track of your clips and steps</h3>
                         <hr class="intro-divider">
@@ -20,11 +20,11 @@
                             </li>                            
                         </ul>
                          
-                        <%#else%>
+                        <%else%>
                         
-                            <!--<h2>Welcome ! </h2>-->
+                            <h2>Welcome <%=current_user.email%>! </h2>
                         
-                         <%# end %>  
+                         <% end %>  
                          </div>
                     </div>
                 </div>
