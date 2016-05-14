@@ -10,6 +10,10 @@
   color: gray;
 }
 
+button > a {
+  color: white; 
+  text-decoration: none;
+}
   
 
 .col-md-4 well {
