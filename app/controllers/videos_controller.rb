@@ -7,10 +7,12 @@ class VideosController < ApplicationController
   end
 
   def new
-    @video = Video.new(video_params)
+    @video = Video.new(user_id: params[:user_id])
   end
 
   def create
+    @video = Video.create(video_params)
+    redirect_to user_videos_path(current_user)
   end
 
   def edit
@@ -28,6 +30,7 @@ class VideosController < ApplicationController
   private
 
   def video_params
+    params.require(:video).permit(:title, :url, :notes, :year, :user_id)
   end
 
   def set_video

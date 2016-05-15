@@ -1,0 +1,10 @@
+<%= form_for(@step) do |f| %>
+<%= f.label :name, "Step Name:"%>
+<%= f.text_field :name %>
+<%= f.label :level_of_mastery, "Current level of mastery (1-10):" %>
+<%= f.text_field :level_of_mastery %>
+<%= f.label :notes, "Step Notes:" %>
+<%= f.text_field :notes %>
+<%= f.hidden_field :user_id %>
+<%= f.submit %>
+<%end%>

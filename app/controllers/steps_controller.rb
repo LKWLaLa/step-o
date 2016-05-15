@@ -7,10 +7,12 @@ class StepsController < ApplicationController
   end
 
   def new
-    @step = Step.new(step_params)
+    @step = Step.new(user_id: params[:user_id])
   end
 
   def create
+    @step = Step.create(step_params)
+    redirect_to user_steps_path(current_user)
   end
 
   def edit
@@ -28,6 +30,7 @@ class StepsController < ApplicationController
   private
 
   def step_params
+    params.require(:step).permit(:name, :user_id, :level_of_mastery, :notes)
   end
 
   def set_step
