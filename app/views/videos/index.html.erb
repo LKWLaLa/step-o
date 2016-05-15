@@ -1,0 +1,45 @@
+<div class="container">
+  <button class="btn btn-primary navbar-btn heading">
+    <%= link_to "Add a New Video", new_user_video_path(current_user, @video) %>
+  </button>
+
+  <h3 class="heading"><%=current_user.email%>'s videos:</h3>
+    <ol>
+      <%@videos.each do |video|%>
+      <li>
+        <div class="panel panel-info">
+        <div class="panel-heading"><a href="/videos/<%=video.id%>"><%=video.title%></a></div>
+           <div class="panel-body">
+              <p class="col-sm-4">
+                <a href="<%=video.url%>" target="_blank" style="text-decoration: none;">
+                  <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                  Watch video clip
+                </a><br><br>
+                Styles:<br> <%video.styles.each do |style|%>
+                  <span class="label label-warning"><%=style.name%></span>
+                <%end%><br><br>
+                Year: <%=video.year%><br>
+              </p>
+
+            <div class="col-sm-4 well">Notes:<br> <%=video.notes%></div>
+          
+            <div class="col-sm-4">     
+              Associated Steps:
+              <ul>
+                <%video.steps.each do |step|%>
+                  <li><a href="/steps/<%=step.id%>"><%=step.name%></a></li>
+                <%end%>
+              </ul>
+            </div>
+
+        </div> <!--panel body-->
+      </div> <!--panel-->
+    </li>
+  <%end%>
+  </ol>
+</div> <!--container-->
+ 
+
+
+    
+

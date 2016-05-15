@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="panel panel-success">
+    <div class="panel-heading"><%=@step.name%></div>
+    <div class="panel-body">
+      Current level of mastery: <%=@step.level_of_mastery%><br>
+
+      Styles: <%@step.styles.each do |style|%>
+
+     <span class="label label-success"><%=style.name%></span>
+
+      <%end%>
+      <br></br>
+
+      
+  
+       <div class="col-sm-12 well">Notes:<br> <%=@step.notes%></div>
+      
+
+        <h4>Video Clips:</h4>
+        <ol>
+        <%@step.videos.each do |video|%>        
+          <li>
+            <a href="/videos/<%=video.id%>"><%=video.title%> </a><%if !video.year.nil?%> (<%=video.year%>) <%end%> <br>
+            <a href="<%=video.url%>" target="_blank" style="text-decoration: none;">
+              <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+              Watch clip
+            </a>
+          </li><br>
+        <%end%>
+        </ol><br>      
+     
+
+      <button class="btn btn-warning">
+        <a href="/steps/<%=@step.id%>/edit" style="color: white; text-decoration: none;">Edit Step</a>
+      </button>
+
+    </div><!--panel body-->
+  </div> <!--panel-->
+</div><!--container-->
+
