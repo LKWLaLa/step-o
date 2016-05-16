@@ -3,11 +3,19 @@ class StepsController < ApplicationController
   before_action :authenticate_user!, :set_step, only: [:edit, :show, :destroy]
 
   def index
-    @steps = current_user.steps
+    if params[:user_id] == current_user.id.to_s
+      @steps = current_user.steps
+    else
+      redirect_to root_path, alert: "Access denied."
+    end
   end
 
   def new
-    @step = Step.new(user_id: params[:user_id])
+    if params[:user_id] == current_user.id.to_s
+      @step = Step.new(user_id: params[:user_id])
+    else
+      redirect_to root_path, alert: "Access denied."
+    end
   end
 
   def create
@@ -16,7 +24,7 @@ class StepsController < ApplicationController
   end
 
   def edit
-     if params[:author_id] == current_user.id
+     if params[:user_id] == current_user.id.to_s
       @step = current_user.steps.find_by(id: params[:id])
       redirect_to user_steps_path(current_user), alert: "Step not found." if @step.nil?
     else
