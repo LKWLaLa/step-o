@@ -16,9 +16,18 @@ class StepsController < ApplicationController
   end
 
   def edit
+     if params[:author_id] == current_user.id
+      @step = current_user.steps.find_by(id: params[:id])
+      redirect_to user_steps_path(current_user), alert: "Step not found." if @step.nil?
+    else
+      redirect_to root_path, alert: "Access denied."
+    end
   end
 
   def update
+    if @step.update(video_params)
+      redirect_to user_steps_path(current_user), alert: "Your step has been updated."
+    end
   end
 
   def show
@@ -34,7 +43,7 @@ class StepsController < ApplicationController
   end
 
   def set_step
-    @step = Step.find_by(params[:id])
+    @step = Step.find_by(id: params[:id])
   end
   
 

@@ -16,9 +16,18 @@ class VideosController < ApplicationController
   end
 
   def edit
+    if params[:author_id] == current_user.id
+      @video = current_user.videos.find_by(id: params[:id])
+      redirect_to user_videos_path(current_user), alert: "Video not found." if @video.nil?
+    else
+      redirect_to root_path, alert: "Access denied."
+    end
   end
 
   def update
+    if @video.update(video_params)
+      redirect_to user_videos_path(current_user), alert: "Your video has been updated."
+    end
   end
 
   def show
@@ -34,7 +43,7 @@ class VideosController < ApplicationController
   end
 
   def set_video
-    @video = Video.find_by(params[:id])
+    @video = Video.find_by(id: params[:id])
   end
   
 
