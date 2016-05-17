@@ -1,12 +1,27 @@
 <%= form_for(@video) do |f| %>
-<%= f.label :title, "Title:" %>
-<%= f.text_field :title %>
-<%= f.label :year, "Year:" %>
-<%= f.text_field :year %>
-<%= f.label :url, "URL:" %>
-<%= f.text_field :url %>
-<%= f.label :notes, "Video Notes:" %>
-<%= f.text_field :notes %>
-<%= f.hidden_field :user_id %>
-<%= f.submit %>
+  <%= f.label :title, "Title:" %>
+  <%= f.text_field :title %>
+  <%= f.label :year, "Year:" %>
+  <%= f.text_field :year %>
+  <%= f.label :url, "URL:" %>
+  <%= f.text_field :url %>
+  <%= f.label :notes, "Video Notes:" %>
+  <%= f.text_field :notes %>
+  <%= f.hidden_field :user_id %><br><br>
+
+  Add a new step:<br>
+
+  <%= f.fields_for :step_attributes do |s| %>
+    <%= s.label :name, "Step Name:"%>
+    <%= s.text_field :name %>
+    <%= s.label :level_of_mastery, "Current level of mastery (1-10):" %>
+    <%= s.text_field :level_of_mastery %>
+    <%= s.label :notes, "Step Notes:" %>
+    <%= s.text_area :notes %>
+    <%= s.hidden_field :user_id %><br>
+    <%= s.label :style_ids, "Associated Styles:" %><br>
+    <%= s.collection_check_boxes :style_ids, Style.all, :id, :name %><br><br>
+  <%end%>
+
+  <%= f.submit %>
 <%end%>

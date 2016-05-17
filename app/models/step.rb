@@ -6,5 +6,14 @@ class Step < ActiveRecord::Base
   has_many :styles, through: :step_styles
 
   validates :name, presence: true
+
+  def video_attributes=(video_attributes)
+    video_attributes.values.each do |video_attribute|
+      if video_attribute[:url].present? && video_attribute[:title].present?
+        video = Video.find_or_create_by(video_attribute)
+        self.videos << video
+      end
+    end
+  end 
   
 end

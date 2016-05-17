@@ -4,7 +4,10 @@
 <%= f.label :level_of_mastery, "Current level of mastery (1-10):" %>
 <%= f.text_field :level_of_mastery %>
 <%= f.label :notes, "Step Notes:" %>
-<%= f.text_field :notes %>
+<%= f.text_area :notes %>
 <%= f.hidden_field :user_id %>
+<%= f.label :style_ids, "Associated Styles:" %>
+<%= f.collection_check_boxes :style_ids, Style.all, :id, :name %>
 <%= f.submit %>
 <%end%>
+  
