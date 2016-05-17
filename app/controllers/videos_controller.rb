@@ -14,7 +14,7 @@ class VideosController < ApplicationController
   def new
     if params[:user_id] == current_user.id.to_s
       @video = Video.new(user_id: params[:user_id])
-      @video.steps.build
+      2.times {@video.steps.build}
     else
       redirect_to root_path, alert: "Access denied."
     end
@@ -49,7 +49,7 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:title, :url, :notes, :year, :user_id, step_attributes: [:name, :level_of_mastery, :notes, style_ids:[]])
+    params.require(:video).permit(:title, :url, :notes, :year, :user_id, step_ids: [], steps_attributes: [:user_id, :name, :level_of_mastery, :notes, style_ids:[]])
   end
 
   def set_video

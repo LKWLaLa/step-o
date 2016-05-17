@@ -23,5 +23,9 @@
     <%= s.collection_check_boxes :style_ids, Style.all, :id, :name %><br><br>
   <%end%>
 
+  Associate an existing step:<br>
+
+  <%= f.collection_check_boxes :step_ids, current_user.steps.all, :id, :name %><br>
+
   <%= f.submit %>
 <%end%>

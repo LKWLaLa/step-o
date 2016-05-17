@@ -47,7 +47,7 @@ class StepsController < ApplicationController
   private
 
   def step_params
-    params.require(:step).permit(:name, :user_id, :level_of_mastery, :notes, video_attributes: [:url, :title, :notes, :year])
+    params.require(:step).permit(:name, :user_id, :level_of_mastery, :notes, video_ids: [], videos_attributes: [:user_id, :url, :title, :notes, :year])
   end
 
   def set_step
