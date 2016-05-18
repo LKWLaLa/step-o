@@ -17,7 +17,7 @@
       <h4>Associated steps:</h4>
         <ol>
           <%@video.steps.each do |step|%>
-            <li><a href="/steps/<%=step.id%>"><%=step.name%> </a><br>
+            <li><%= link_to "#{step.name}", user_step_path(current_user, step)%><br>
             Current level of mastery: <%=step.level_of_mastery%>
               <ul>
                 <%step.styles.each do |style|%>

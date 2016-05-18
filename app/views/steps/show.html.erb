@@ -20,7 +20,7 @@
         <ol>
         <%@step.videos.each do |video|%>        
           <li>
-            <a href="/videos/<%=video.id%>"><%=video.title%> </a><%if !video.year.nil?%> (<%=video.year%>) <%end%> <br>
+            <%= link_to "#{video.title}", user_video_path(current_user, video)%><%if !video.year.nil?%> (<%=video.year%>) <%end%> <br>
             <a href="<%=video.url%>" target="_blank" style="text-decoration: none;">
               <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
               Watch clip

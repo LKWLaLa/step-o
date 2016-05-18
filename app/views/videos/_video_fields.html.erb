@@ -1,5 +1,6 @@
 <%= form_for(@video) do |f| %>
-  <%= f.label :title, "Title:" %>
+  
+  <%= f.label :title, "Video Title:" %>
   <%= f.text_field :title %>
   <%= f.label :year, "Year:" %>
   <%= f.text_field :year %>
@@ -9,8 +10,8 @@
   <%= f.text_field :notes %>
   <%= f.hidden_field :user_id %><br><br>
 
-  Add a new step:<br>
- 
+  Steps: <br>
+
   <%= f.fields_for :steps do |s| %>
     <%= s.label :name, "Step Name:"%>
     <%= s.text_field :name %>
@@ -18,13 +19,20 @@
     <%= s.text_field :level_of_mastery %>
     <%= s.label :notes, "Step Notes:" %>
     <%= s.text_area :notes %>
-    <%= s.hidden_field :user_id, :value => params[:user_id] %><br>
+    <%= s.hidden_field :user_id, :value => params[:user_id] %>
+    <%= s.label :_destroy, "Remove This Step", :class => "form-label" if s.object.persisted?%>
+    <%= s.check_box :_destroy if s.object.persisted?%><br>
    <br><br>
   <%end%>
 
-  Associate an existing step:<br>
 
-  <%= f.collection_check_boxes :step_ids, current_user.steps.all, :id, :name %><br>
+  Include another step from library:<br><br>
+
+  <%= f.collection_select(:step_ids, current_user.steps, :id, :name, include_blank: true, selected: nil )%><br><br>
 
   <%= f.submit %>
+
 <%end%>
+
+
+

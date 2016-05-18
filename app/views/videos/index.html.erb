@@ -27,7 +27,7 @@
               Associated Steps:
               <ul>
                 <%video.steps.each do |step|%>
-                  <li><a href="/steps/<%=step.id%>"><%=step.name%></a></li>
+                  <li><%= link_to "#{step.name}", user_step_path(current_user, step)%></li>
                 <%end%>
               </ul>
             </div>
