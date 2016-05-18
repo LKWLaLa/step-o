@@ -31,7 +31,7 @@
      
 
       <button class="btn btn-warning">
-        <a href="/steps/<%=@step.id%>/edit" style="color: white; text-decoration: none;">Edit Step</a>
+         <%= link_to "Edit Step", edit_user_step_path(current_user, @step), style: "color: white; text-decoration: none;" %>
       </button>
 
     </div><!--panel body-->

@@ -41,6 +41,12 @@ class VideosController < ApplicationController
   end
 
   def show
+     if params[:user_id] == current_user.id.to_s
+      @video = current_user.videos.find_by(id: params[:id])
+      redirect_to user_videos_path(current_user), alert: "Video not found." if @video.nil?
+    else
+      redirect_to root_path, alert: "Access denied."
+    end
   end
 
   def destroy
