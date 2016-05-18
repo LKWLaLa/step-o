@@ -1,6 +1,6 @@
 class StepsController < ApplicationController
 
-  before_action :authenticate_user!, :set_step, only: [:edit, :show, :destroy]
+  before_action :authenticate_user!, :set_step, only: [:edit, :show, :update, :destroy]
 
   def index
     if params[:user_id] == current_user.id.to_s
@@ -33,7 +33,7 @@ class StepsController < ApplicationController
   end
 
   def update
-    if @step.update(video_params)
+    if @step.update(step_params)
       redirect_to user_steps_path(current_user), alert: "Your step has been updated."
     end
   end

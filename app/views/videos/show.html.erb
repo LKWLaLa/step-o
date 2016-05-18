@@ -29,9 +29,7 @@
         </ol>
 
       <button class="btn btn-warning">
-        <a href="/videos/<%=@video.id%>/edit" style="color: white; text-decoration: none;">
-          Edit Video Info
-        </a>
+        <%= link_to "Edit Video", edit_user_video_path(current_user, @video), style: "color: white; text-decoration: none;" %>
       </button>
 
     </div><!--panel body-->

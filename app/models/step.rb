@@ -7,8 +7,8 @@ class Step < ActiveRecord::Base
 
   validates :name, presence: true
 
-  def videos_attributes=(videos_attributes)
-    videos_attributes.values.each do |video_attribute|
+  def videos_attributes=(video_attributes)
+    video_attributes.values.each do |video_attribute|
       if video_attribute[:url].present? && video_attribute[:title].present?
         video = Video.find_or_create_by(video_attribute)
         self.timemarkers.build(:video => video)

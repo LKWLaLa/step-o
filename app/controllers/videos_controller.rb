@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
 
-  before_action :authenticate_user!, :set_video, only: [:edit, :show, :destroy]
+  before_action :authenticate_user!, :set_video, only: [:edit, :show, :destroy, :update]
 
   def index
     if params[:user_id] == current_user.id.to_s

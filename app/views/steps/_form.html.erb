@@ -1,13 +1,25 @@
 <%= form_for(@step) do |f| %>
-<%= f.label :name, "Step Name:"%>
-<%= f.text_field :name %>
-<%= f.label :level_of_mastery, "Current level of mastery (1-10):" %>
-<%= f.text_field :level_of_mastery %>
-<%= f.label :notes, "Step Notes:" %>
-<%= f.text_area :notes %>
-<%= f.hidden_field :user_id %>
-<%= f.label :style_ids, "Associated Styles:" %>
-<%= f.collection_check_boxes :style_ids, Style.all, :id, :name %>
-<%= f.submit %>
+  <%= f.label :name, "Step Name:"%>
+  <%= f.text_field :name %>
+  <%= f.label :level_of_mastery, "Current level of mastery (1-10):" %>
+  <%= f.text_field :level_of_mastery %>
+  <%= f.label :notes, "Step Notes:" %>
+  <%= f.text_area :notes %>
+  <%= f.hidden_field :user_id %>
+  <%= f.label :style_ids, "Associated Styles:" %>
+  <%= f.collection_check_boxes :style_ids, Style.all, :id, :name %><br><br>
+
+  <%= f.fields_for :videos, @step.videos.build do |v| %>
+    <%= v.label :title, "Title:" %>
+    <%= v.text_field :title %>
+    <%= v.label :year, "Year:" %>
+    <%= v.text_field :year %>
+    <%= v.label :url, "URL:" %>
+    <%= v.text_field :url %>
+    <%= v.label :notes, "Video Notes:" %>
+    <%= v.text_field :notes %>
+    <%= v.hidden_field :user_id, :value => params[:user_id]  %><br><br>
+  <% end %>
+  <%= f.submit %>
 <%end%>
   
