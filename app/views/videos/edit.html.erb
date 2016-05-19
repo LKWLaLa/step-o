@@ -1,1 +1,3 @@
 <%= render 'video_fields'%>
+
+<%= button_to "Delete Video", user_video_path(current_user, @video), :method => "delete", :class => "btn btn-danger pull-right" %>

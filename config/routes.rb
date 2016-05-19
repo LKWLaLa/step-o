@@ -3,15 +3,15 @@ Rails.application.routes.draw do
    root 'home#index'
 
   
-  resources :videos, only: [:index, :create, :update, :destroy]
-  resources :steps, only: [:index, :create, :update, :destroy]
+  resources :videos, only: [:index, :create, :update]
+  resources :steps, only: [:index, :create, :update]
  
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" },
   :paths => 'users' 
 
   resources :users, only: [] do
-    resources :videos, only: [:index, :new, :edit, :show]
-    resources :steps, only: [:index, :new, :edit, :show]
+    resources :videos, only: [:index, :new, :edit, :show, :destroy]
+    resources :steps, only: [:index, :new, :edit, :show, :destroy]
   end
     
   

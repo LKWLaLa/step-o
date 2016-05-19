@@ -34,7 +34,7 @@ class StepsController < ApplicationController
 
   def update
     if @step.update(step_params)
-      redirect_to user_steps_path(current_user), alert: "Your step has been updated."
+      redirect_to user_steps_path(current_user), alert: "Your step has been successfully updated."
     end
   end
 
@@ -42,6 +42,8 @@ class StepsController < ApplicationController
   end
 
   def destroy
+    @step.destroy
+    redirect_to user_steps_path(current_user), alert: "Your step has been sucessfully deleted."
   end
 
   private

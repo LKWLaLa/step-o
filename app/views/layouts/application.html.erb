@@ -78,9 +78,12 @@
     </nav>
 
     <br><br><br><br>
-    <%# unless locals.empty? %>
+
+  <%= content_tag(:div, flash[:error], :class => "alert alert-warning",:id => "flash_error") if flash[:error] %>
+  <%= content_tag(:div, flash[:notice], :class => "alert alert-warning", :id => "flash_notice") if flash[:notice] %>
+  <%= content_tag(:div, flash[:alert], :class => "alert alert-warning", :id => "flash_alert") if flash[:alert] %>
         <!--<div class="alert alert-warning" role="alert"> <%#= message %></div>-->
-    <%# end %>
+    
 
     <%=yield%>
 

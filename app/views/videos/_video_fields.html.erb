@@ -13,7 +13,11 @@
   Steps: <br>
 
   <%= f.fields_for :steps do |s| %>
-    <%= s.label :name, "Step Name:"%>
+    <% if s.object.persisted? %>
+      <%= s.label :name, "Name:"%>
+    <%else%>
+       <%= s.label :name, "Add New Step:"%>
+    <%end%>
     <%= s.text_field :name %>
     <%= s.label :level_of_mastery, "Current level of mastery (1-10):" %>
     <%= s.text_field :level_of_mastery %>

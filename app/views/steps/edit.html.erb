@@ -1,1 +1,3 @@
 <%= render 'form'%>
+
+<%= button_to "Delete Step", user_step_path(current_user, @step), :method => "delete", :class => "btn btn-danger pull-right" %>
