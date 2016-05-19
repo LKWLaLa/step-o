@@ -32,7 +32,7 @@
 
   Include another step from library:<br><br>
 
-  <%= f.collection_select(:step_ids, current_user.steps, :id, :name, include_blank: true, selected: nil )%><br><br>
+  <%= f.collection_select(:step_ids, current_user.steps.uniq, :id, :name, include_blank: true, selected: nil )%><br><br>
 
   <%= f.submit %>
 

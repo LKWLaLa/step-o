@@ -1,16 +1,23 @@
 <%= form_for(@step) do |f| %>
+
   <%= f.label :name, "Step Name:"%>
   <%= f.text_field :name %>
   <%= f.label :level_of_mastery, "Current level of mastery (1-10):" %>
   <%= f.text_field :level_of_mastery %>
   <%= f.label :notes, "Step Notes:" %>
-  <%= f.text_area :notes %>
+  <%= f.text_area :notes %><br><br>
   <%= f.hidden_field :user_id %>
-  <%= f.label :style_ids, "Associated Styles:" %>
+  <%= f.label :style_ids, "Associated Styles:" %><br>
   <%= f.collection_check_boxes :style_ids, Style.all, :id, :name %><br><br>
 
-  <%= f.fields_for :videos, @step.videos.build do |v| %>
-    <%= v.label :title, "Title:" %>
+  Videos: <br><br>
+
+  <%= f.fields_for :videos do |v| %>
+    <% if v.object.persisted? %>
+     <%= v.label :title, "Title:" %>
+     <%else%>
+       <%= v.label :title, "Add New Video:"%>
+    <%end%>
     <%= v.text_field :title %>
     <%= v.label :year, "Year:" %>
     <%= v.text_field :year %>
@@ -18,8 +25,15 @@
     <%= v.text_field :url %>
     <%= v.label :notes, "Video Notes:" %>
     <%= v.text_field :notes %>
-    <%= v.hidden_field :user_id, :value => params[:user_id]  %><br><br>
+    <%= v.hidden_field :user_id, :value => params[:user_id]  %>
+    <%= v.label :_destroy, "Remove This Video", :class => "form-label" if v.object.persisted?%>
+    <%= v.check_box :_destroy if v.object.persisted?%><br><br>
   <% end %>
+
+  Include another video from library:<br><br>
+
+  <%= f.collection_select(:video_ids, current_user.videos.uniq, :id, :title, include_blank: true, selected: nil )%><br><br>
+
   <%= f.submit %>
 <%end%>
   

@@ -13,7 +13,7 @@ class Video < ActiveRecord::Base
     step_attributes.values.each do |step_attribute|
       if step_attribute[:name].present? 
         step = Step.find_or_create_by(step_attribute)
-        self.timemarkers.build(:step => step)
+        self.timemarkers.build(:step => step) if !self.steps.include?(step)
       end
     end
   end 

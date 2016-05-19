@@ -13,6 +13,7 @@ class StepsController < ApplicationController
   def new
     if params[:user_id] == current_user.id.to_s
       @step = Step.new(user_id: params[:user_id])
+      @step.videos.build
     else
       redirect_to root_path, alert: "Access denied."
     end
@@ -26,6 +27,7 @@ class StepsController < ApplicationController
   def edit
      if params[:user_id] == current_user.id.to_s
       @step = current_user.steps.find_by(id: params[:id])
+      @step.videos.build
       redirect_to user_steps_path(current_user), alert: "Step not found." if @step.nil?
     else
       redirect_to root_path, alert: "Access denied."

@@ -11,7 +11,7 @@ class Step < ActiveRecord::Base
     video_attributes.values.each do |video_attribute|
       if video_attribute[:url].present? && video_attribute[:title].present?
         video = Video.find_or_create_by(video_attribute)
-        self.timemarkers.build(:video => video)
+        self.timemarkers.build(:video => video) if !self.videos.include?(video)
       end
     end
   end 
