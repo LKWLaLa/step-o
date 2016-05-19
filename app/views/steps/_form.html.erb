@@ -32,7 +32,8 @@
 
   Include another video from library:<br><br>
 
-  <%= f.collection_select(:video_ids, current_user.videos.uniq, :id, :title, include_blank: true, selected: nil )%><br><br>
+ 
+  <%= f.collection_select(:video_ids, current_user.videos, :id, :title, include_blank: true, selected: nil )%><br><br>
 
   <%= f.submit %>
 <%end%>

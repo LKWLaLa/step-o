@@ -58,7 +58,7 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:title, :url, :notes, :year, :user_id, step_ids: [], steps_attributes: [:id, :user_id, :name, :level_of_mastery, :notes, style_ids:[]])
+    params.require(:video).permit(:title, :url, :notes, :year, :user_id, step_ids: [], steps_attributes: [:id, :_destroy, :user_id, :name, :level_of_mastery, :notes, style_ids:[]])
   end
 
   def set_video

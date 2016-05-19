@@ -35,6 +35,7 @@ class StepsController < ApplicationController
   end
 
   def update
+    raise params.inspect
     if @step.update(step_params)
       redirect_to user_steps_path(current_user), alert: "Your step has been successfully updated."
     end
@@ -51,7 +52,7 @@ class StepsController < ApplicationController
   private
 
   def step_params
-    params.require(:step).permit(:name, :user_id, :level_of_mastery, :notes, style_ids: [], video_ids: [], videos_attributes: [:id, :user_id, :url, :title, :notes, :year])
+    params.require(:step).permit(:name, :user_id, :level_of_mastery, :notes, style_ids: [], :video_ids => [], videos_attributes: [:id, :user_id, :url, :title, :notes, :_destroy, :year])
   end
 
   def set_step
