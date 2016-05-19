@@ -7,6 +7,9 @@ class Step < ActiveRecord::Base
 
   validates :name, presence: true
 
+  accepts_nested_attributes_for :timemarkers
+
+
 
   def videos_attributes=(video_attributes)
     video_attributes.values.each do |video_attribute|

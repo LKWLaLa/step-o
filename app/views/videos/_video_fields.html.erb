@@ -19,6 +19,12 @@
        <%= s.label :name, "Add New Step:"%>
     <%end%>
     <%= s.text_field :name %>
+    
+      <%= s.fields_for :timemarkers do |t| %>
+        <%= t.label :marker, "Timestamp:"%>
+        <%= t.text_field :marker %>
+      <% end %>
+
     <%= s.label :level_of_mastery, "Current level of mastery (1-10):" %>
     <%= s.text_field :level_of_mastery %>
     <%= s.label :notes, "Step Notes:" %>
