@@ -14,7 +14,7 @@ class VideosController < ApplicationController
   def new
     if params[:user_id] == current_user.id.to_s
       @video = Video.new(user_id: params[:user_id])
-      @video.steps.build
+      @video.timemarkers.build.build_step
     else
       redirect_to root_path, alert: "Access denied."
     end
@@ -28,8 +28,7 @@ class VideosController < ApplicationController
   def edit
     if params[:user_id] == current_user.id.to_s
       @video = current_user.videos.find_by(id: params[:id])
-      @video.steps.build
-      @video.timemarkers.build
+      @video.timemarkers.build.build_step
       redirect_to user_videos_path(current_user), alert: "Video not found." if @video.nil?
     else
       redirect_to root_path, alert: "Access denied."
@@ -59,7 +58,7 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:title, :url, :notes, :year, :user_id, step_ids: [], steps_attributes: [:id, :_destroy, :user_id, :name, :level_of_mastery, :notes, timemarkers_attributes:[:marker], style_ids:[]])
+    params.require(:video).permit(:title, :url, :notes, :year, :user_id, step_ids: [], timemarkers_attributes: [:id, :marker, step_attributes: [:id, :user_id, :name, :level_of_mastery, :notes, style_ids:[]])
   end
 
   def set_video

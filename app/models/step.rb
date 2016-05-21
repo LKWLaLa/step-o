@@ -9,20 +9,5 @@ class Step < ActiveRecord::Base
 
   accepts_nested_attributes_for :timemarkers
 
-
-
-  def videos_attributes=(video_attributes)
-    video_attributes.values.each do |video_attribute|
-      if video_attribute[:url].present? && video_attribute[:title].present?
-        video = Video.find_or_create_by(video_attribute.except(:_destroy))
-        if video_attribute[:_destroy] == "1"
-          self.videos.delete(video) 
-        else
-         self.timemarkers.build(:video => video) if !self.videos.include?(video)
-        end
-      end
-    end
-  end
-
   
 end
