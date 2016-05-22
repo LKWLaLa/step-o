@@ -13,14 +13,19 @@
   Videos: <br><br>
 
   <%= f.fields_for :timemarkers do |t| %>
+   <% if !t.object.persisted? %>
+      Add a new video:<br><br>
+    <% end %>
     <%= t.label :marker, "Timestamp:"%>
     <%= t.text_field :marker %>
+
     <%= t.fields_for :video do |v| %>
-      <% if v.object.persisted? %>
-       <%= v.label :title, "Title:" %>
-       <%else%>
-         <%= v.label :title, "Add New Video:"%>
-      <%end%>
+      <% if !v.object.persisted? %>
+       <%= v.label :id, "Add a video from your collection:" %>
+        <%= v.collection_select(:id, current_user.videos.order(:title), :id, :title, include_blank: true )%><br><br>
+      <% end %>
+
+      <%= v.label :title, "Title:" %>      
       <%= v.text_field :title %>
       <%= v.label :year, "Year:" %>
       <%= v.text_field :year %>
@@ -33,10 +38,6 @@
     <% end %>
   <% end %>
 
-  Include another video from library:<br><br>
-
- 
-  <%= f.collection_select(:video_ids, current_user.videos, :id, :title, include_blank: true, selected: nil )%><br><br>
 
   <%= f.submit %>
 <%end%>

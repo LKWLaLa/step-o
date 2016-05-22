@@ -22,6 +22,10 @@
 
 
     <%= t.fields_for :step do |s| %>
+      <% if !s.object.persisted? %>
+        <%= s.label :id, "Add a step from your collection:" %>
+        <%= s.collection_select(:id, current_user.steps.order(:name), :id, :name, include_blank: true )%><br><br>
+      <% end %>
       <%= s.label :name, "Step Name:"%>
       <%= s.text_field :name %>
       <%= s.label :level_of_mastery, "Current level of mastery (1-10):" %>
