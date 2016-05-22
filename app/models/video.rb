@@ -8,7 +8,7 @@ class Video < ActiveRecord::Base
   validates :url, presence: true
   validates :title, presence: true
 
-  accepts_nested_attributes_for :timemarkers
+  accepts_nested_attributes_for :timemarkers, reject_if: proc { |attribute| attribute['marker'].blank? }
 
 
 end
