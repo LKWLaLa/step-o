@@ -12,33 +12,31 @@
 
   Steps: <br>
 
-  <%= f.fields_for :steps do |s| %>
-    <% if s.object.persisted? %>
-      <%= s.label :name, "Name:"%>
-    <%else%>
-       <%= s.label :name, "Add New Step:"%>
-    <%end%>
-    <%= s.text_field :name %>
-    
-      <%= s.fields_for :timemarkers do |t| %>
-        <%= t.label :marker, "Timestamp:"%>
-        <%= t.text_field :marker %>
-      <% end %>
+  <%= f.fields_for :timemarkers do |t| %>
+    <%= t.label :marker, "Timestamp:"%>
+    <%= t.text_field :marker %>
 
-    <%= s.label :level_of_mastery, "Current level of mastery (1-10):" %>
-    <%= s.text_field :level_of_mastery %>
-    <%= s.label :notes, "Step Notes:" %>
-    <%= s.text_area :notes %>
-    <%= s.hidden_field :user_id, :value => params[:user_id] %>
-    <%= s.label :_destroy, "Remove This Step", :class => "form-label" if s.object.persisted?%>
-    <%= s.check_box :_destroy if s.object.persisted?%><br>
-   <br><br>
-  <%end%>
+    <%= t.fields_for :step do |s| %>
+      <% if s.object.persisted? %>
+        <%= s.label :name, "Name:"%>
+      <%else%>
+         <%= s.label :name, "Add New Step:"%>
+      <%end%>
+      <%= s.text_field :name %>
+      <%= s.label :level_of_mastery, "Current level of mastery (1-10):" %>
+      <%= s.text_field :level_of_mastery %>
+      <%= s.label :notes, "Step Notes:" %>
+      <%= s.text_area :notes %>
+      <%= s.hidden_field :user_id, :value => params[:user_id] %><br>
+     <br><br>
+    <% end %>
+  <% end %>
+
 
 
   Include another step from library:<br><br>
 
-  <%= f.collection_select(:step_ids, current_user.steps.uniq, :id, :name, include_blank: true, selected: nil )%><br><br>
+  <%= f.collection_select(:step_ids, current_user.steps, :id, :name, include_blank: true, selected: nil )%><br><br>
 
   <%= f.submit %>
 

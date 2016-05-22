@@ -11,23 +11,27 @@
   <%= f.collection_check_boxes :style_ids, Style.all, :id, :name %><br><br>
 
   Videos: <br><br>
-
-  <%= f.fields_for :videos do |v| %>
-    <% if v.object.persisted? %>
-     <%= v.label :title, "Title:" %>
-     <%else%>
-       <%= v.label :title, "Add New Video:"%>
-    <%end%>
-    <%= v.text_field :title %>
-    <%= v.label :year, "Year:" %>
-    <%= v.text_field :year %>
-    <%= v.label :url, "URL:" %>
-    <%= v.text_field :url %>
-    <%= v.label :notes, "Video Notes:" %>
-    <%= v.text_field :notes %>
-    <%= v.hidden_field :user_id, :value => params[:user_id]  %>
-    <%= v.label :_destroy, "Remove This Video", :class => "form-label" if v.object.persisted?%>
-    <%= v.check_box :_destroy if v.object.persisted?%><br><br>
+  
+  <%= f.fields_for :timemarkers do |t| %>
+    <%= t.label :marker, "Timestamp:"%>
+    <%= t.text_field :marker %>
+    <%= t.fields_for :video do |v| %>
+      <% if v.object.persisted? %>
+       <%= v.label :title, "Title:" %>
+       <%else%>
+         <%= v.label :title, "Add New Video:"%>
+      <%end%>
+      <%= v.text_field :title %>
+      <%= v.label :year, "Year:" %>
+      <%= v.text_field :year %>
+      <%= v.label :url, "URL:" %>
+      <%= v.text_field :url %>
+      <%= v.label :notes, "Video Notes:" %>
+      <%= v.text_field :notes %>
+      <%= v.hidden_field :user_id, :value => params[:user_id]  %>
+      <%= v.label :_destroy, "Remove This Video", :class => "form-label" if v.object.persisted?%>
+      <%= v.check_box :_destroy if v.object.persisted?%><br><br>
+    <% end %>
   <% end %>
 
   Include another video from library:<br><br>
