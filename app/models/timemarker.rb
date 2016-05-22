@@ -5,15 +5,26 @@ class Timemarker < ActiveRecord::Base
 
   def step_attributes=(attributes)
     if attributes[:name].present? 
-      this_step = Step.find_or_create_by(attributes)
-      self.step = this_step #if !self.step.include?(step)
+      if attributes[:id].present?
+        existing_join = Step.find_by(id: attributes[:id])
+        existing_join.update(attributes)
+      else
+        new_join = Step.find_or_create_by(attributes)
+        self.step = new_join 
+      end
     end
   end 
 
+
   def video_attributes=(attributes)
     if attributes[:url].present? && attributes[:title].present?
-      this_video = Video.find_or_create_by(attributes)
-      self.video = this_video #if !self.video.include?(video)
+      if attributes[:id].present?
+        existing_join = Video.find_by(id: attributes[:id])
+        existing_join.update(attributes)
+      else
+        new_join = Video.find_or_create_by(attributes)
+        self.video = new_join 
+      end
     end
   end
 

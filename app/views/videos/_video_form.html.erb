@@ -13,15 +13,16 @@
   Steps: <br>
 
   <%= f.fields_for :timemarkers do |t| %>
+    <% if !t.object.persisted? %>
+      Add a new step:<br><br>
+    <% end %>
+
     <%= t.label :marker, "Timestamp:"%>
     <%= t.text_field :marker %>
 
+
     <%= t.fields_for :step do |s| %>
-      <% if s.object.persisted? %>
-        <%= s.label :name, "Name:"%>
-      <%else%>
-         <%= s.label :name, "Add New Step:"%>
-      <%end%>
+      <%= s.label :name, "Step Name:"%>
       <%= s.text_field :name %>
       <%= s.label :level_of_mastery, "Current level of mastery (1-10):" %>
       <%= s.text_field :level_of_mastery %>
@@ -34,10 +35,7 @@
 
 
 
-  Include another step from library:<br><br>
-
-  <%= f.collection_select(:step_ids, current_user.steps, :id, :name, include_blank: true, selected: nil )%><br><br>
-
+  
   <%= f.submit %>
 
 <%end%>
