@@ -32,9 +32,12 @@
       <%= v.label :url, "URL:" %>
       <%= v.text_field :url %>
       <%= v.label :notes, "Video Notes:" %>
-      <%= v.text_field :notes %>
+      <%= v.text_field :notes %><br><br>
       <%= v.hidden_field :user_id, :value => params[:user_id]  %>
-      <br><br>
+    <% end %>
+    <% if t.object.persisted? %>
+       Remove video: <%= t.check_box :_destroy %>
+      <br><br><br>
     <% end %>
   <% end %>
 

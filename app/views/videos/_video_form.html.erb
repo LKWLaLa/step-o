@@ -33,7 +33,10 @@
       <%= s.label :notes, "Step Notes:" %>
       <%= s.text_area :notes %>
       <%= s.hidden_field :user_id, :value => params[:user_id] %><br>
-     <br><br>
+    <% end %>
+    <% if t.object.persisted? %>
+       Remove step: <%= t.check_box :_destroy %>
+      <br><br><br>
     <% end %>
   <% end %>
 
