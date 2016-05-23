@@ -5,10 +5,7 @@
     </div>
     <div class="panel-body">
 
-        <a href="<%=@video.url%>" target="_blank" style="text-decoration: none;">
-          <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-          Watch video clip
-        </a>
+        <iframe width="1100" height="400" src= "http://www.youtube.com/embed/<%=YoutubeID.from(@video.url) %>" frameborder="0" allowfullscreen></iframe><br>
       
       <br><br>
 
