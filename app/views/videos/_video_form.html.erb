@@ -15,44 +15,62 @@
     </div>
   </div> <!--row1-->
 
+  <div class="row">
       <%= f.label :notes, "Video Notes:" %>
-      <%= f.text_field :notes %>
+      <%= f.text_area :notes, class: "well col-sm-12" %>
       <%= f.hidden_field :user_id %><br><br>
+  </div> <!--row2-->   
 
-      Steps: <br>
+      <h3>Associated Steps: </h3><br>
 
+ 
       <%= f.fields_for :timemarkers do |t| %>
+  
         <% if !t.object.persisted? %>
-          Add a new step:<br><br>
+          <h3>Add a step:</h3><br><br>
         <% end %>
+    <div class="row">
+      <div class="col-sm-4">
 
         <%= t.label :marker, "Timestamp:"%>
-        <%= t.text_field :marker %>
+        <%= t.text_field :marker %><br>
 
 
         <%= t.fields_for :step do |s| %>
-          <% if !s.object.persisted? %>
-            <%= s.label :id, "Add a step from your collection:" %>
-            <%= s.collection_select(:id, current_user.steps.order(:name), :id, :name, include_blank: true )%><br><br>
-          <% end %>
           <%= s.label :name, "Step Name:"%>
           <%= s.text_field :name %>
+        </div>
+          
+        <div class="col-sm-8">
+         <% if !s.object.persisted? %>
+            <%= s.label :id, "Add a step from your collection:" %>
+            <%= s.collection_select(:id, current_user.steps.order(:name), :id, :name, include_blank: true )%>  - (Or a new step name below):<br>
+          <% end %>
+         
           <%= s.label :level_of_mastery, "Current level of mastery (1-10):" %>
-          <%= s.text_field :level_of_mastery %>
-          <%= s.label :notes, "Step Notes:" %>
-          <%= s.text_area :notes %>
+          <%= s.number_field :level_of_mastery, max: 10, min: 0 %>
+
           <%= s.hidden_field :user_id, :value => params[:user_id] %><br>
         <% end %>
+        </div>
+
+        <div class="col-sm-4">  
         <% if t.object.persisted? %>
-           Remove step: <%= t.check_box :_destroy %>
-          <br><br><br>
+          <%= t.label :_destroy, "Remove step", :class => "text-danger" %>
+          <%= t.check_box :_destroy %> 
+          <br><br><br><br>
+        </div>
         <% end %>
+      </div><br>
       <% end %>
+     
 
 
-
-      
-      <%= f.submit %>
+     <div class="row">   
+       <div class="col-sm-8">  
+      <br><br><%= f.submit :class => "btn btn-warning "%>
+      </div>     
+     </div> 
 
     <%end%>
 

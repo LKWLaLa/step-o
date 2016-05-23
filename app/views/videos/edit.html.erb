@@ -1,11 +1,10 @@
 <div class="container">
-  <h3>Edit Video:</h3>
+  <h1>Edit Video:</h1>
   <div class="jumbotron">
 
 <%= render 'video_form'%>
 
-<%= button_to "Delete Video", user_video_path(current_user, @video), :method => "delete", :class => "btn btn-danger pull-right" %>
-
+<%= link_to "Delete Video", user_video_path(current_user, @video), :method => "delete", :class => "text-danger pull-right" %>
 
 </div> <!--jumbotron-->
 </div> <!--container-->
