@@ -18,7 +18,7 @@
 
         <h4>Video Clips:</h4>
         <ol>
-        <%@step.videos.each do |video|%>        
+        <%@step.videos.uniq.each do |video|%>        
           <li>
             <%= link_to "#{video.title}", user_video_path(current_user, video)%><%if !video.year.nil?%> (<%=video.year%>) <%end%> <br>
             <a href="<%=video.url%>" target="_blank" style="text-decoration: none;">

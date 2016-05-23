@@ -1,51 +1,60 @@
+
 <%= form_for(@video) do |f| %>
   
-  <%= f.label :title, "Video Title:" %>
-  <%= f.text_field :title %>
-  <%= f.label :year, "Year:" %>
-  <%= f.text_field :year %>
-  <%= f.label :url, "URL:" %>
-  <%= f.text_field :url %>
-  <%= f.label :notes, "Video Notes:" %>
-  <%= f.text_field :notes %>
-  <%= f.hidden_field :user_id %><br><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <%= f.label :title, "Title:" %>
+      <%= f.text_field :title %><br>
+      <%= f.label :year, "Year:" %>
+      <%= f.text_field :year %><br><br>
+    </div>
 
-  Steps: <br>
+    <div class"col-sm-8">
+      <%= f.label :url, "URL:" %>
+      <%= f.text_field :url, class:"col-sm-8" %><br><br>
+    </div>
+  </div> <!--row1-->
 
-  <%= f.fields_for :timemarkers do |t| %>
-    <% if !t.object.persisted? %>
-      Add a new step:<br><br>
-    <% end %>
+      <%= f.label :notes, "Video Notes:" %>
+      <%= f.text_field :notes %>
+      <%= f.hidden_field :user_id %><br><br>
 
-    <%= t.label :marker, "Timestamp:"%>
-    <%= t.text_field :marker %>
+      Steps: <br>
+
+      <%= f.fields_for :timemarkers do |t| %>
+        <% if !t.object.persisted? %>
+          Add a new step:<br><br>
+        <% end %>
+
+        <%= t.label :marker, "Timestamp:"%>
+        <%= t.text_field :marker %>
 
 
-    <%= t.fields_for :step do |s| %>
-      <% if !s.object.persisted? %>
-        <%= s.label :id, "Add a step from your collection:" %>
-        <%= s.collection_select(:id, current_user.steps.order(:name), :id, :name, include_blank: true )%><br><br>
+        <%= t.fields_for :step do |s| %>
+          <% if !s.object.persisted? %>
+            <%= s.label :id, "Add a step from your collection:" %>
+            <%= s.collection_select(:id, current_user.steps.order(:name), :id, :name, include_blank: true )%><br><br>
+          <% end %>
+          <%= s.label :name, "Step Name:"%>
+          <%= s.text_field :name %>
+          <%= s.label :level_of_mastery, "Current level of mastery (1-10):" %>
+          <%= s.text_field :level_of_mastery %>
+          <%= s.label :notes, "Step Notes:" %>
+          <%= s.text_area :notes %>
+          <%= s.hidden_field :user_id, :value => params[:user_id] %><br>
+        <% end %>
+        <% if t.object.persisted? %>
+           Remove step: <%= t.check_box :_destroy %>
+          <br><br><br>
+        <% end %>
       <% end %>
-      <%= s.label :name, "Step Name:"%>
-      <%= s.text_field :name %>
-      <%= s.label :level_of_mastery, "Current level of mastery (1-10):" %>
-      <%= s.text_field :level_of_mastery %>
-      <%= s.label :notes, "Step Notes:" %>
-      <%= s.text_area :notes %>
-      <%= s.hidden_field :user_id, :value => params[:user_id] %><br>
-    <% end %>
-    <% if t.object.persisted? %>
-       Remove step: <%= t.check_box :_destroy %>
-      <br><br><br>
-    <% end %>
-  <% end %>
 
 
 
-  
-  <%= f.submit %>
+      
+      <%= f.submit %>
 
-<%end%>
+    <%end%>
 
 
 

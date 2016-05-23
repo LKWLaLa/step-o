@@ -1,3 +1,11 @@
-<%= render 'step_form'%>
+<div class="container">
+  <h3>Edit Step:</h3>
+  <div class="jumbotron">
 
-<%= button_to "Delete Step", user_step_path(current_user, @step), :method => "delete", :class => "btn btn-danger pull-right" %>
+  <%= render 'step_form'%>
+
+  <%= button_to "Delete Step", user_step_path(current_user, @step), :method => "delete", :class => "btn btn-danger pull-right" %>
+
+  </div> <!--jumbotron-->
+</div> <!--container-->
+

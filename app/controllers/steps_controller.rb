@@ -36,7 +36,7 @@ class StepsController < ApplicationController
 
   def update
     if @step.update(step_params)
-      redirect_to user_steps_path(current_user), alert: "Your step has been successfully updated."
+      redirect_to user_step_path(current_user, @step), alert: "Your step has been successfully updated."
     end
   end
 

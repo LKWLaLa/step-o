@@ -15,7 +15,7 @@
 
               <p class="col-sm-4">
                 Styles:<br>
-                 <%step.styles.each do |style|%>
+                 <%step.styles.uniq.each do |style|%>
                 <span class="label label-info"><%=style.name%></span> 
                 <%end%><br><br>
                 Current level of mastery: <%=step.level_of_mastery%><br>
@@ -26,7 +26,7 @@
               <div class="col-sm-4">      
                 Associated videos:<br>
                 <ul>
-                  <%step.videos.each do |video|%>
+                  <%step.videos.uniq.each do |video|%>
                   <li><%= link_to "#{video.title}", user_video_path(current_user, video)%></li>
                   <%end%>
                 </ul>

@@ -15,7 +15,7 @@
                   <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
                   Watch video clip
                 </a><br><br>
-                Styles:<br> <%video.styles.each do |style|%>
+                Styles:<br> <%video.styles.uniq.each do |style|%>
                   <span class="label label-warning"><%=style.name%></span>
                 <%end%><br><br>
                 Year: <%=video.year%><br>
@@ -26,7 +26,7 @@
             <div class="col-sm-4">     
               Associated Steps:
               <ul>
-                <%video.steps.each do |step|%>
+                <%video.steps.uniq.each do |step|%>
                   <li><%= link_to "#{step.name}", user_step_path(current_user, step)%></li>
                 <%end%>
               </ul>

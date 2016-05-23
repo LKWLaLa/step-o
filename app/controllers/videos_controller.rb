@@ -37,7 +37,7 @@ class VideosController < ApplicationController
 
   def update
     if @video.update(video_params)
-      redirect_to user_videos_path(current_user), alert: "Your video has been updated."
+      redirect_to user_video_path(current_user, @video), alert: "Your video has been updated."
     end
   end
 
