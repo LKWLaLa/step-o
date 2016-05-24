@@ -8,7 +8,7 @@
     <h3 class="heading"><%=current_user.email%>'s steps:</h3>
 
     <ol>
-      <%@steps.each do |step|%>
+      <%@steps.order(:name).each do |step|%>
         <li>   
           <div class="panel panel-success">
             <div class="panel-heading"><%= link_to "#{step.name}", user_step_path(current_user, step)%></div>         <div class="panel-body">

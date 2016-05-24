@@ -1,50 +1,82 @@
 
 <%= form_for(@step) do |f| %>
 
-  <%= f.label :name, "Step Name:"%>
-  <%= f.text_field :name %>
-  <%= f.label :level_of_mastery, "Current level of mastery (1-10):" %>
-  <%= f.text_field :level_of_mastery %>
-  <%= f.label :notes, "Step Notes:" %>
-  <%= f.text_area :notes %><br><br>
-  <%= f.hidden_field :user_id %>
-  <%= f.label :style_ids, "Associated Styles:" %><br>
-  <%= f.collection_check_boxes :style_ids, Style.all, :id, :name %><br><br>
 
-  Videos: <br><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <%= f.label :name, "Step Name:"%>
+      <%= f.text_field :name %>
+    </div>
 
-  <%= f.fields_for :timemarkers do |t| %>
-   <% if !t.object.persisted? %>
-      Add a new video:<br><br>
+    <div class="col-sm-8">
+      <%= f.label :level_of_mastery, "Current level of mastery (1-10):" %>
+      <%= f.number_field :level_of_mastery, max: 10, min: 0 %>
+    </div>
+  </div><br> <!--row1-->  
+
+   <div class="row">
+     <div class="col-sm-12">
+      <%= f.label :notes, "Step Notes:" %><br>
+      <%= f.text_area :notes, class: "well col-sm-12" %><br><br>
+      <%= f.hidden_field :user_id %>
+     </div> 
+   </div> <!--row2-->
+
+   <div class="row">   
+
+      <%= f.label :style_ids, "Associated Styles:" %><br>
+      <%= f.collection_check_boxes :style_ids, Style.all, :id, :name do |cb| %>
+        <%= cb.label class:"checkbox-inline no_indent" do %>
+         <%= cb.check_box + cb.text%>
+        <%end%>
     <% end %>
-    <%= t.label :marker, "Timestamp:"%>
-    <%= t.text_field :marker %>
+      <br><br>
+  </div> <!--row3-->    
 
-    <%= t.fields_for :video do |v| %>
-      <% if !v.object.persisted? %>
-       <%= v.label :id, "Add a video from your collection:" %>
-        <%= v.collection_select(:id, current_user.videos.order(:title), :id, :title, include_blank: true )%><br><br>
+      <h3>Videos:</h3><br>
+
+      <%= f.fields_for :timemarkers do |t| %>
+
+       <% if !t.object.persisted? %>
+         <h3> Add a new video:</h3><br>
+        <% end %>
+
+    <div class="row">
+      <div class="col-sm-4"> 
+        <%= t.label :marker, "Timestamp:"%>
+        <%= t.text_field :marker %><br><br>
+
+
+        <%= t.fields_for :video do |v| %>
+           <%= v.label :title, "Title:" %>      
+          <%= v.text_field :title %><br>
+          <%= v.label :year, "Year:" %>
+          <%= v.text_field :year %>
+           
+      </div>
+
+      <div class="col-sm-8">
+         <% if !v.object.persisted? %>
+           <%= v.label :id, "Add a video from your collection:" %>
+            <%= v.collection_select(:id, current_user.videos.order(:title), :id, :title, include_blank: true )%> - (Or new video info below):<br>
+          <% end %><br><br>
+        <%= v.label :url, "URL:" %><br>
+        <%= v.text_field :url, class:"col-sm-8" %>  
+      </div>
+    </div><br><!--row 4-->        
+
+          <%= v.hidden_field :user_id, :value => params[:user_id]  %>
+        <% end %>
+        <% if t.object.persisted? %>
+         <%= t.label :_destroy, "Remove video", :class => "text-danger" %>
+        <%= t.check_box :_destroy %>
+          <br><br><br>
+        <% end %>
       <% end %>
 
-      <%= v.label :title, "Title:" %>      
-      <%= v.text_field :title %>
-      <%= v.label :year, "Year:" %>
-      <%= v.text_field :year %>
-      <%= v.label :url, "URL:" %>
-      <%= v.text_field :url %>
-      <%= v.label :notes, "Video Notes:" %>
-      <%= v.text_field :notes %><br><br>
-      <%= v.hidden_field :user_id, :value => params[:user_id]  %>
-    <% end %>
-    <% if t.object.persisted? %>
-       Remove video: <%= t.check_box :_destroy %>
-      <br><br><br>
-    <% end %>
-  <% end %>
+
+      <%= f.submit :class => "btn btn-warning " %>
+    <%end%>
 
 
-  <%= f.submit %>
-<%end%>
-
-
-  
+      

@@ -5,7 +5,7 @@
 
   <h3 class="heading"><%=current_user.email%>'s videos:</h3>
     <ol>
-      <%@videos.each do |video|%>
+      <%@videos.order(:title).each do |video|%>
       <li>
         <div class="panel panel-info">
         <div class="panel-heading"><%= link_to "#{video.title}", user_video_path(current_user, video)%></div>
