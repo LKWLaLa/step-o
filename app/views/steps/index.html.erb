@@ -7,11 +7,22 @@
   <form class=" dropdown-toggle-default pull-right">
   <h4>Filter by Style:</h4>
     <%= select("style", "id", Style.all.map {|s| [s.name, s.id] }, {:include_blank => 'All'}) %>
-    <input type="submit" value="Submit" />
-  </form>
+    <input type="submit" value="Filter" />
+  </form><br><br><br>
+
+  <%= form_tag(user_steps_path(current_user), :method => "get", id: "search-form", class: "pull-right") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search all steps" %>
+    <%= submit_tag "Search" %>
+  <% end %>
  
 
     <h2 class="heading">My Steps:</h2>
+
+    <% if @steps.empty? %>
+      <p class ="alert alert-warning">
+        Sorry! Could not find any steps containing the term "<%= params[:search] %>."
+      </p>
+    <% end %>
 
     <ol>
       <%@steps.order(:name).each do |step|%>

@@ -15,5 +15,9 @@ class Step < ActiveRecord::Base
       joins(:step_styles).where(step_styles: {style_id: style_id})
    end
 
+  def self.search(search)
+    where("name LIKE ? OR notes LIKE ?", "%#{search}%", "%#{search}%") 
+  end
+
   
 end

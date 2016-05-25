@@ -7,9 +7,23 @@
   <h4>Filter by Style:</h4>
     <%= select("style", "id", Style.all.map {|s| [s.name, s.id] }, {:include_blank => 'All'}) %>
     <input type="submit" value="Submit" />
-  </form>
+  </form><br><br>
+
+   <%= form_tag(user_videos_path(current_user), :method => "get", id: "search-form", class: "pull-right") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search all videos" %>
+    <%= submit_tag "Search" %>
+  <% end %>
+
+ 
 
   <h2 class="heading">My Videos:</h2>
+
+    <% if @videos.empty? %>
+      <p class ="alert alert-warning">
+        Sorry! Could not find any videos containing the term "<%= params[:search] %>."
+      </p>
+    <% end %>
+
     <ol>
       <%@videos.order(:title).each do |video|%>
       <li>

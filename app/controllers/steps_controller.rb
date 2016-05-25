@@ -4,7 +4,9 @@ class StepsController < ApplicationController
 
   def index
     if params[:user_id] == current_user.id.to_s
-      if params[:style] &&  params[:style][:id].present?
+      if params[:search]
+        @steps = Step.search(params[:search])
+      elsif params[:style] &&  params[:style][:id].present?
         @steps = current_user.steps.filter_by_style(params[:style][:id])
       else
         @steps = current_user.steps

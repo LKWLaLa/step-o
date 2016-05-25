@@ -15,4 +15,8 @@ class Video < ActiveRecord::Base
       joins(:timemarkers).where(timemarkers: {step_id: Step.filter_by_style(style_id)}).uniq
   end
 
+  def self.search(search)
+    where("title LIKE ? OR notes LIKE ?", "%#{search}%", "%#{search}%") 
+  end
+
 end

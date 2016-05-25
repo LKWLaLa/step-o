@@ -4,7 +4,9 @@ class VideosController < ApplicationController
 
   def index
     if params[:user_id] == current_user.id.to_s
-      if params[:style] &&  params[:style][:id].present?
+      if params[:search]
+        @videos = Video.search(params[:search])
+      elsif params[:style] &&  params[:style][:id].present?
         @videos = current_user.videos.filter_by_style(params[:style][:id])
       else
         @videos = current_user.videos
