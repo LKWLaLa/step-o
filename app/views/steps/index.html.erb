@@ -3,7 +3,13 @@
   <button class="btn btn-primary">
       <%= link_to "Add a New Step", new_user_step_path(current_user, @step) %>
   </button>
-    
+  
+  <form class=" dropdown-toggle-default pull-right">
+  <h4>Filter by Style:</h4>
+    <%= select("style", "id", Style.all.map {|s| [s.name, s.id] }, {:include_blank => 'All'}) %>
+    <input type="submit" value="Submit" />
+  </form>
+ 
 
     <h3 class="heading"><%=current_user.email%>'s steps:</h3>
 
@@ -11,7 +17,8 @@
       <%@steps.order(:name).each do |step|%>
         <li>   
           <div class="panel panel-success">
-            <div class="panel-heading"><%= link_to "#{step.name}", user_step_path(current_user, step)%></div>         <div class="panel-body">
+            <div class="panel-heading"><%= link_to "#{step.name}", user_step_path(current_user, step)%></div>         
+            <div class="panel-body">
 
               <p class="col-sm-4">
                 Styles:<br>
