@@ -3,6 +3,12 @@
     <%= link_to "Add a New Video", new_user_video_path(current_user, @video) %>
   </button>
 
+   <form class=" dropdown-toggle-default pull-right">
+  <h4>Filter by Style:</h4>
+    <%= select("style", "id", Style.all.map {|s| [s.name, s.id] }, {:include_blank => 'All'}) %>
+    <input type="submit" value="Submit" />
+  </form>
+
   <h3 class="heading"><%=current_user.email%>'s videos:</h3>
     <ol>
       <%@videos.order(:title).each do |video|%>

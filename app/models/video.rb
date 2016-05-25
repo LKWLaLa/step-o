@@ -11,5 +11,8 @@ class Video < ActiveRecord::Base
   accepts_nested_attributes_for :timemarkers, allow_destroy: true,
   reject_if: proc { |attribute| attribute['marker'].blank? && attribute['step_attributes']['name'].blank?}
 
+  def self.filter_by_style(style_id)
+      joins(:timemarkers).where(timemarkers: {step_id: Step.filter_by_style(style_id)}).uniq
+   end
 
 end
