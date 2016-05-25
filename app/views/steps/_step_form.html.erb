@@ -35,7 +35,7 @@
 
       <h3>Videos:</h3><br>
 
-      <%= f.fields_for :timemarkers, (@step.timemarkers || @step.build_timemarkers)do |t| %>
+      <%= f.fields_for :timemarkers do |t| %>
 
        <% if !t.object.persisted? %>
          <h3> Add a new video:</h3><br>
@@ -43,7 +43,7 @@
 
     <div class="row">
       <div class="col-sm-4"> 
-        <%= t.label :marker, "Timestamp:"%>
+        <%= t.label :marker, "Timestamp where step occurs:"%>
         <%= t.text_field :marker %><br><br>
 
 

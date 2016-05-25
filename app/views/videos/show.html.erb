@@ -2,7 +2,7 @@
 <div class="container">
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <%=@video.title%> <%if !@video.year.nil?%> (<%=@video.year%>) <%end%>
+      <h4><%=@video.title%> <%if !@video.year.nil?%> (<%=@video.year%>) <%end%></h4>
     </div>
     <div class="panel-body">
 
@@ -12,10 +12,11 @@
 
       <div class="col-sm-12 well">Notes:<br> <%=@video.notes%></div>
 
-      <h4>Associated steps:</h4>
+      <h3>My steps:</h3><br>
         <ol>
           <%@video.steps.uniq.each do |step|%>
-            <li><%= link_to "#{step.name}", user_step_path(current_user, step)%><br>
+            <li><h4><%= link_to "#{step.name}", user_step_path(current_user, step)%>
+                 -  at: <%= Timemarker.filter_by_instance(step.id, @video.id)%></h4>
             Current level of mastery: <%=step.level_of_mastery%>
               <ul>
                 <%step.styles.each do |style|%>

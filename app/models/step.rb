@@ -14,5 +14,6 @@ class Step < ActiveRecord::Base
    def self.filter_by_style(style_id)
       joins(:step_styles).where(step_styles: {style_id: style_id})
    end
+
   
 end

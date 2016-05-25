@@ -9,7 +9,7 @@
     <input type="submit" value="Submit" />
   </form>
 
-  <h3 class="heading"><%=current_user.email%>'s videos:</h3>
+  <h2 class="heading">My Videos:</h2>
     <ol>
       <%@videos.order(:title).each do |video|%>
       <li>

@@ -1,7 +1,7 @@
 <body id="show_page">
 <div class="container">
   <div class="panel panel-success">
-    <div class="panel-heading"><%=@step.name%></div>
+    <div class="panel-heading"><h3><%=@step.name%></h3></div>
     <div class="panel-body">
       Current level of mastery: <%=@step.level_of_mastery%><br>
 
@@ -10,9 +10,7 @@
      <span class="label label-success"><%=style.name%></span>
 
       <%end%>
-      <br></br>
-
-      
+      <br></br>      
   
        <div class="col-sm-12 well">Notes:<br> <%=@step.notes%></div>
       
@@ -21,7 +19,8 @@
         <ol>
         <%@step.videos.uniq.each do |video|%>        
           <li>
-            <%= link_to "#{video.title}", user_video_path(current_user, video)%><%if !video.year.nil?%> (<%=video.year%>) <%end%> <br>
+            <%= link_to "#{video.title}", user_video_path(current_user, video)%><%if !video.year.nil?%> (<%=video.year%>) <%end%>
+             -  at: <%= Timemarker.filter_by_instance(@step.id, video.id)%><br> 
           </li><br>
         <%end%>
         </ol><br>      

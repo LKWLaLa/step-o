@@ -13,6 +13,6 @@ class Video < ActiveRecord::Base
 
   def self.filter_by_style(style_id)
       joins(:timemarkers).where(timemarkers: {step_id: Step.filter_by_style(style_id)}).uniq
-   end
+  end
 
 end

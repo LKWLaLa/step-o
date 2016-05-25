@@ -38,6 +38,10 @@ class Timemarker < ActiveRecord::Base
     end
   end
 
+  def self.filter_by_instance(step_id, video_id)
+    where(step_id: step_id, video_id: video_id).map{|i| i.marker}.join(", ")
+  end
+
 
 
 end
