@@ -1,10 +1,11 @@
 <div class="container">
+<%= render 'errors_messages' %>
   <h1>Edit Step:</h1>
   <div class="jumbotron">
 
   <%= render 'step_form'%>
 
-  <%= link_to "Delete Step", user_step_path(current_user, @step), :method => "delete", :class => "text-danger pull-right" %>
+  <%= link_to "Delete Step", user_step_path(current_user, @step), :method => "delete", :class => "text-danger pull-right", data: { confirm: "Delete this from your library?" } %>
 
   </div> <!--jumbotron-->
 </div> <!--container-->

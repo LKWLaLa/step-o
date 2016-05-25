@@ -8,8 +8,7 @@ class Step < ActiveRecord::Base
   validates :name, presence: true
 
    accepts_nested_attributes_for :timemarkers, allow_destroy: true, 
-    reject_if: proc { |attribute| attribute['marker'].blank? }
-
+   reject_if: proc { |attribute| attribute['marker'].blank? && attribute['video_attributes']['title'].blank?}
 
   
 end

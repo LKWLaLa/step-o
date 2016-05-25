@@ -3,6 +3,8 @@ class Timemarker < ActiveRecord::Base
   belongs_to :video
   belongs_to :step
 
+  validates :marker, presence: true
+
   def step_attributes=(attributes)
     if attributes[:id].present?
       existing = Step.find_by(id: attributes[:id])

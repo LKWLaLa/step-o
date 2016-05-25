@@ -1,0 +1,9 @@
+<% if @video.errors.any? %>
+  <div class= "alert alert-warning">
+    <ul>
+    <% @video.errors.full_messages.each do |msg| %>
+      <li>ERROR: <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

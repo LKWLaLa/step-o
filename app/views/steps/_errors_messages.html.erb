@@ -1,0 +1,9 @@
+<% if @step.errors.any? %>
+  <div class= "alert alert-warning"> 
+    <ul>
+    <% @step.errors.full_messages.each do |msg| %>
+      <li>ERROR: <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

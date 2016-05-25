@@ -1,6 +1,6 @@
 <body id="show_page">
 <div class="container">
-  <div class="panel panel-primary">
+  <div class="panel panel-success">
     <div class="panel-heading"><%=@step.name%></div>
     <div class="panel-body">
       Current level of mastery: <%=@step.level_of_mastery%><br>
@@ -22,10 +22,6 @@
         <%@step.videos.uniq.each do |video|%>        
           <li>
             <%= link_to "#{video.title}", user_video_path(current_user, video)%><%if !video.year.nil?%> (<%=video.year%>) <%end%> <br>
-            <a href="<%=video.url%>" target="_blank" style="text-decoration: none;">
-              <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-              Watch clip
-            </a>
           </li><br>
         <%end%>
         </ol><br>      

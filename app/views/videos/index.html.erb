@@ -11,10 +11,6 @@
         <div class="panel-heading"><%= link_to "#{video.title}", user_video_path(current_user, video)%></div>
            <div class="panel-body">
               <p class="col-sm-4">
-                <a href="<%=video.url%>" target="_blank" style="text-decoration: none;">
-                  <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-                  Watch video clip
-                </a><br><br>
                 Styles:<br> <%video.styles.uniq.each do |style|%>
                   <span class="label label-warning"><%=style.name%></span>
                 <%end%><br><br>

@@ -21,7 +21,11 @@ class StepsController < ApplicationController
 
   def create
     @step = Step.create(step_params)
-    redirect_to user_steps_path(current_user)
+    if @step.save
+      redirect_to user_step_path(current_user, @step), alert: "Your step has been created."
+    else
+      render :new
+    end
   end
 
   def edit
@@ -37,6 +41,8 @@ class StepsController < ApplicationController
   def update
     if @step.update(step_params)
       redirect_to user_step_path(current_user, @step), alert: "Your step has been successfully updated."
+    else
+      render :edit
     end
   end
 

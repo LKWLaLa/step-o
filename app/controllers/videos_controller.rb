@@ -22,7 +22,11 @@ class VideosController < ApplicationController
 
   def create
     @video = Video.create(video_params)
-    redirect_to user_videos_path(current_user)
+    if @video.save
+      redirect_to user_video_path(current_user, @video), alert: "Your video has been successfully added."
+    else
+      render :new
+    end
   end
 
   def edit
@@ -38,6 +42,8 @@ class VideosController < ApplicationController
   def update
     if @video.update(video_params)
       redirect_to user_video_path(current_user, @video), alert: "Your video has been updated."
+    else
+      render :edit
     end
   end
 
