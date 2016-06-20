@@ -6,8 +6,8 @@ class StepsController < ApplicationController
 
   def index
     if params[:search]
-      @steps = Step.search(params[:search])
-    elsif params[:style] &&  params[:style][:id].present?
+      @steps = current_user.steps.search(params[:search])
+    elsif params[:style] && params[:style][:id].present?
       @steps = current_user.steps.filter_by_style(params[:style][:id])
     else
       @steps = current_user.steps
@@ -42,6 +42,7 @@ class StepsController < ApplicationController
   end
 
   def show
+    redirect_to user_steps_path(current_user), alert: "Step not found." if @step.nil?
   end
 
   def destroy

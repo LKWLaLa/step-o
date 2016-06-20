@@ -1,29 +1,22 @@
 class VideosController < ApplicationController
 
-  before_action :authenticate_user!, :set_video, only: [:edit, :show, :destroy, :update]
+  before_action :authenticate_user!
+  before_action :validate_user_nesting, only: [:index, :new, :edit, :show]
+  before_action :set_video, only: [:edit, :show, :update, :destroy]
 
   def index
-    if params[:user_id] == current_user.id.to_s
-      if params[:search]
-        @videos = Video.search(params[:search])
-      elsif params[:style] &&  params[:style][:id].present?
-        @videos = current_user.videos.filter_by_style(params[:style][:id])
-      else
-        @videos = current_user.videos
-      end
+    if params[:search]
+      @videos = current_user.videos.search(params[:search])
+    elsif params[:style] && params[:style][:id].present?
+      @videos = current_user.videos.filter_by_style(params[:style][:id])
     else
-      redirect_to root_path, alert: "Access denied."
+      @videos = current_user.videos
     end
-
   end
 
   def new
-    if params[:user_id] == current_user.id.to_s
-      @video = Video.new(user_id: params[:user_id])
-      @video.timemarkers.build.build_step
-    else
-      redirect_to root_path, alert: "Access denied."
-    end
+    @video = Video.new(user_id: params[:user_id])
+    @video.timemarkers.build.build_step    
   end
 
   def create
@@ -36,13 +29,8 @@ class VideosController < ApplicationController
   end
 
   def edit
-    if params[:user_id] == current_user.id.to_s
-      @video = current_user.videos.find_by(id: params[:id])
-      @video.timemarkers.build.build_step
-      redirect_to user_videos_path(current_user), alert: "Video not found." if @video.nil?
-    else
-      redirect_to root_path, alert: "Access denied."
-    end
+    @video.timemarkers.build.build_step
+    redirect_to user_videos_path(current_user), alert: "Video not found." if @video.nil?
   end
 
   def update
@@ -54,18 +42,14 @@ class VideosController < ApplicationController
   end
 
   def show
-     if params[:user_id] == current_user.id.to_s
-      @video = current_user.videos.find_by(id: params[:id])
-      redirect_to user_videos_path(current_user), alert: "Video not found." if @video.nil?
-    else
-      redirect_to root_path, alert: "Access denied."
-    end
+    redirect_to user_videos_path(current_user), alert: "Video not found." if @video.nil?
   end
 
   def destroy
     @video.destroy
     redirect_to user_videos_path(current_user), alert: "Your video has been deleted."
   end
+
 
   private
 
@@ -74,7 +58,13 @@ class VideosController < ApplicationController
   end
 
   def set_video
-    @video = Video.find_by(id: params[:id])
+    @video = current_user.videos.find_by(id: params[:id])
+  end
+
+  def validate_user_nesting
+     if params[:user_id] != current_user.id.to_s
+       redirect_to root_path, alert: "Access denied."
+     end
   end
   
 end
