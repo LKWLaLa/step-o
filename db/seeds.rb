@@ -10,6 +10,7 @@ Style.create(name: "Tap")
 Style.create(name: "Hip Hop")
 Style.create(name: "Shag")
 Style.create(name: "Charleston")
+Style.create(name: "Tricks/Aerials")
 
 
 

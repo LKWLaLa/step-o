@@ -18,7 +18,7 @@
 
     <h2 class="heading">My Steps:</h2>
 
-    <% if @steps.empty? %>
+    <% if params[:search] && @steps.empty? %>
       <p class ="alert alert-warning">
         Sorry! Could not find any steps containing the term "<%= params[:search] %>."
       </p>

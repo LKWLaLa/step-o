@@ -1,28 +1,22 @@
 class StepsController < ApplicationController
 
-  before_action :authenticate_user!, :set_step, only: [:edit, :show, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :validate_user_nesting, only: [:index, :new, :edit, :show]
+  before_action :set_step, only: [:edit, :show, :update, :destroy]
 
   def index
-    if params[:user_id] == current_user.id.to_s
-      if params[:search]
-        @steps = Step.search(params[:search])
-      elsif params[:style] &&  params[:style][:id].present?
-        @steps = current_user.steps.filter_by_style(params[:style][:id])
-      else
-        @steps = current_user.steps
-      end
+    if params[:search]
+      @steps = Step.search(params[:search])
+    elsif params[:style] &&  params[:style][:id].present?
+      @steps = current_user.steps.filter_by_style(params[:style][:id])
     else
-      redirect_to root_path, alert: "Access denied."
+      @steps = current_user.steps
     end
   end
 
   def new
-    if params[:user_id] == current_user.id.to_s
-      @step = Step.new(user_id: params[:user_id])
-      @step.timemarkers.build.build_video
-    else
-      redirect_to root_path, alert: "Access denied."
-    end
+    @step = Step.new(user_id: params[:user_id])
+    @step.timemarkers.build.build_video
   end
 
   def create
@@ -35,13 +29,8 @@ class StepsController < ApplicationController
   end
 
   def edit
-     if params[:user_id] == current_user.id.to_s
-      @step = current_user.steps.find_by(id: params[:id])
-      @step.timemarkers.build.build_video
-      redirect_to user_steps_path(current_user), alert: "Step not found." if @step.nil?
-    else
-      redirect_to root_path, alert: "Access denied."
-    end
+    @step.timemarkers.build.build_video
+    redirect_to user_steps_path(current_user), alert: "Step not found." if @step.nil?
   end
 
   def update
@@ -60,6 +49,7 @@ class StepsController < ApplicationController
     redirect_to user_steps_path(current_user), alert: "Your step has been sucessfully deleted."
   end
 
+
   private
 
   def step_params
@@ -67,8 +57,16 @@ class StepsController < ApplicationController
   end
 
   def set_step
-    @step = Step.find_by(id: params[:id])
+   @step = current_user.steps.find_by(id: params[:id])
   end
+
+  def validate_user_nesting
+     if params[:user_id] != current_user.id.to_s
+       redirect_to root_path, alert: "Access denied."
+     end
+  end
+
+
   
 
 end

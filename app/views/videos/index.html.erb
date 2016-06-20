@@ -18,7 +18,7 @@
 
   <h2 class="heading">My Videos:</h2>
 
-    <% if @videos.empty? %>
+    <% if params[:search] && @videos.empty? %>
       <p class ="alert alert-warning">
         Sorry! Could not find any videos containing the term "<%= params[:search] %>."
       </p>
