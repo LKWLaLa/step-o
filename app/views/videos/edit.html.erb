@@ -3,7 +3,9 @@
  <h1>Edit Video:</h1>
   <div class="jumbotron">
 
-   <iframe width="1020" height="250" src= "http://www.youtube.com/embed/<%=YoutubeID.from(@video.url) %>" frameborder="0" allowfullscreen></iframe><br><br><br>
+    <div class="youtube_container_edit">
+     <iframe width="854" height="480" src= "http://www.youtube.com/embed/<%=YoutubeID.from(@video.url) %>" frameborder="0" allowfullscreen></iframe>
+    </div>
 
 <%= render 'video_form'%>
 

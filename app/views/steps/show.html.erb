@@ -19,7 +19,8 @@
         <ol>
         <%@step.videos.uniq.each do |video|%>        
           <li>
-            <%= link_to "#{video.title}", user_video_path(current_user, video)%><%if !video.year.nil?%> (<%=video.year%>) <%end%>
+            <%= link_to "#{video.title}", user_video_path(current_user, video)%>
+            <%if !video.year.nil?%> (<%=video.year%>) <%end%>
              -  at: <%= Timemarker.filter_by_instance(@step.id, video.id)%><br> 
           </li><br>
         <%end%>

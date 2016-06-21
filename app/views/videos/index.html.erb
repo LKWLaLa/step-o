@@ -28,7 +28,10 @@
       <%@videos.order(:title).each do |video|%>
       <li>
         <div class="panel panel-info">
-        <div class="panel-heading"><%= link_to "#{video.title}", user_video_path(current_user, video)%></div>
+          <div class="panel-heading">
+            <%= link_to "#{video.title}", user_video_path(current_user, video)%>
+          </div><!--panel-heading-->
+
            <div class="panel-body">
               <p class="col-sm-4">
                 Styles:<br> <%video.styles.uniq.each do |style|%>

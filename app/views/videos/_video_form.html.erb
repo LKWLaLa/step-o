@@ -21,14 +21,14 @@
       <%= f.hidden_field :user_id %><br><br>
   </div> <!--row2-->   
 
-      <h3>Associated Steps (add new at bottom of page): </h3><br>
+  <h3>Associated Steps (add new at bottom of page): </h3><br>
 
  
-      <%= f.fields_for :timemarkers do |t| %>
+   <%= f.fields_for :timemarkers do |t| %>
   
-        <% if !t.object.persisted? %>
-          <h3>Add a step:</h3><br><br>
-        <% end %>
+   <% if !t.object.persisted? %>
+       <h3>Add a step:</h3><br><br>
+    <% end %>
         
     <div class="row">
       <div class="col-sm-4">
@@ -62,16 +62,16 @@
           <br><br><br><br>
         </div>
         <% end %>
-      </div><br>
+      </div><br><!--row3-->   
       <% end %>
      
 
 
      <div class="row">   
        <div class="col-sm-8">  
-      <br><br><%= f.submit :class => "btn btn-warning "%>
+          <br><br><%= f.submit :class => "btn btn-warning "%>
       </div>     
-     </div> 
+     </div> <!--row4-->   
 
     <%end%>
 

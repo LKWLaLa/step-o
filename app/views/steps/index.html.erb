@@ -28,9 +28,11 @@
       <%@steps.order(:name).each do |step|%>
         <li>   
           <div class="panel panel-success">
-            <div class="panel-heading"><%= link_to "#{step.name}", user_step_path(current_user, step)%></div>         
-            <div class="panel-body">
+            <div class="panel-heading">
+              <%= link_to "#{step.name}", user_step_path(current_user, step)%>
+            </div><!--panel heading-->   
 
+            <div class="panel-body">
               <p class="col-sm-4">
                 Styles:<br>
                  <%step.styles.uniq.each do |style|%>
