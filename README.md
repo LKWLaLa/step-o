@@ -10,7 +10,7 @@ There is a many to many relationship between steps and videos, with a video cont
 
 Also, steps have a many to many relationship with styles, through a join table called step_styles.  The step_styles join table does not contain any additional attributes.
 
-Users can navigation the app by viewing either the steps index or the videos index, and associations are nested in both directions.  (Steps associated with a particular video, or videos associated with a particular step.)
+Users can navigate the app by viewing either the steps index or the videos index, and associations are nested in both directions.  (Steps associated with a particular video, or videos associated with a particular step.)
 
 
 ###Dependencies:
