@@ -31,7 +31,7 @@ bundle exec rake db:migrate
 bundle exec rake db:seed 
 ```
 
-To start up a local server, run `rails s` , and then navigate to localhost:3000 in your web browser.
+To start up a local server, run `rails s` , and navigate to localhost:3000 in your web browser.
 
 
 ###License:
