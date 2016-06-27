@@ -6,7 +6,7 @@ A Rails based organizer for dance steps a user would like to practice, and the Y
 
 ###Structure:
 
-There is a many to many relationship between steps and videos, with a video containing many dance steps, and a dance step potentially being found in many videos.  They are connected through the join table, named timemarkers, with an additional attribute column - marker - which is essentially the "timestamp" where a dance step is located in a particular video.  
+There is a many to many relationship between steps and videos, with a video containing many dance steps, and a dance step potentially being found in many videos.  They are connected through a join table - timemarkers - which contains an additional attribute column - marker - storing the "timestamp" where a dance step is located in a particular video.  
 
 Also, steps have a many to many relationship with styles, through a join table called step_styles.  The step_styles join table does not contain any additional attributes.
 
@@ -15,7 +15,7 @@ Users can navigate the app by viewing either the steps index or the videos index
 
 ###Dependencies:
 
-Step-O is built on Rails, version 4.2.6, using Ruby version 2.2.3p173, and a sqlite3 database. The app also uses the jquery-rails, devise, omniauth, omniauth-facebook, and youtube_id gems. You will need to obtain a facebook key and facebook secret for full OAuth2 functionality.
+Step-O is built with Rails version 4.2.6, using Ruby version 2.2.3p173, and a sqlite3 database. The app also uses the jquery-rails, devise, omniauth, omniauth-facebook, and youtube_id gems. You will need to obtain a facebook key and facebook secret for full OAuth2 functionality.
 
 ###Installation Guide:
 
