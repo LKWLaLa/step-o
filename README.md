@@ -1,10 +1,10 @@
-step-o
+#step-o
 
-Description
+###Description:
 
 A Rails based organizer for dance steps a user would like to practice, and the YouTube videos they may be found in. 
 
-Structure:
+###Structure:
 
 There is a many to many relationship between steps and videos, with a video containing many dance steps, and a dance step potentially being found in many videos.  They are connected through the join table, named timemarkers, with an additional attribute column - marker - which is essentially the "timestamp" where a dance step is located in a particular video.  
 
@@ -13,26 +13,28 @@ Also, steps have a many to many relationship with styles, through a join table c
 Users can navigation the app by viewing either the steps index or the videos index, and associations are nested in both directions.  (Steps associated with a particular video, or videos associated with a particular step.)
 
 
-Dependencies:
+###Dependencies:
 
-step-o is built on Rails, version 4.2.6, using Ruby version 2.2.3p173 and a sqlite3 database. The app also uses the jquery-rails, devise, omniauth, omniauth-facebook, and youtube_id gems. You will also need to obtain a facebook key and facebook secret for full OAuth2 functionality.
+Step-O is built on Rails, version 4.2.6, using Ruby version 2.2.3p173, and a sqlite3 database. The app also uses the jquery-rails, devise, omniauth, omniauth-facebook, and youtube_id gems. You will also need to obtain a facebook key and facebook secret for full OAuth2 functionality.
 
-Installation Guide:
+###Installation Guide:
 
 If not already available, install Ruby, Bundler, and Rails.
 
-Then run the following in the command line:
+Then clone this repository.
 
-git clone https://github.com/LKWLaLa/step-o.git
-cd step-o
+In the command line, run:
+
+```bash
 bundle
 bundle exec rake db:migrate
-bundle exec rake db:seed
-To start up a local server, run rails s in your command line, and then navigate to localhost:3000 in your web browser.
+bundle exec rake db:seed 
+```
+
+To start up a local server, run `rails s` , and then navigate to localhost:3000 in your web browser.
 
 
-
-License:
+###License:
 
 The MIT License (MIT)
 
