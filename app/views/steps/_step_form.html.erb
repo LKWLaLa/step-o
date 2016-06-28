@@ -27,9 +27,16 @@
       <%= f.label :style_ids, "Associated Styles:" %><br>
       <%= f.collection_check_boxes :style_ids, Style.all, :id, :name do |cb| %>
         <%= cb.label class:"checkbox-inline no_indent" do %>
-         <%= cb.check_box + cb.text%>
+          <%= cb.check_box + cb.text%>
         <%end%>
+
     <% end %>
+
+ 
+    <%= f.fields_for :styles, @step.styles.build do |s| %>
+    Add a new style:  <%= s.text_field :name %><br>
+    <% end %>
+   
       <br><br>
   </div> <!--row3-->    
 

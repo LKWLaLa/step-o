@@ -10,6 +10,15 @@ class Step < ActiveRecord::Base
    accepts_nested_attributes_for :timemarkers, allow_destroy: true, 
    reject_if: proc { |attribute| attribute['marker'].blank? && attribute['video_attributes']['url'].blank?}
 
+   def styles_attributes=(new_styles_hash)
+    new_styles_hash.values.each do |attributes|
+      if attributes[:name].present?
+        style = Style.find_or_create_by(name: attributes[:name])
+        self.step_styles.build(:style => style)
+      end
+    end
+   end
+   
 
    def self.filter_by_style(style_id)
       joins(:step_styles).where(step_styles: {style_id: style_id})
