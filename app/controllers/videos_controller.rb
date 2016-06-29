@@ -43,7 +43,7 @@ class VideosController < ApplicationController
 
   def show
    respond_to do |format|
-      format.html { redirect_to user_videos_path(current_user), alert: "Step not found." if @video.nil? }
+      format.html { redirect_to user_videos_path(current_user), alert: "Video not found." if @video.nil? }
       format.json { render json: @video}
     end
   end
