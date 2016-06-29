@@ -42,7 +42,10 @@ class StepsController < ApplicationController
   end
 
   def show
-    redirect_to user_steps_path(current_user), alert: "Step not found." if @step.nil?
+     respond_to do |format|
+      format.html { redirect_to user_steps_path(current_user), alert: "Step not found." if @step.nil? }
+      format.json { render json: @step}
+    end
   end
 
   def destroy

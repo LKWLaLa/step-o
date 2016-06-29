@@ -42,8 +42,12 @@ class VideosController < ApplicationController
   end
 
   def show
-    redirect_to user_videos_path(current_user), alert: "Video not found." if @video.nil?
+   respond_to do |format|
+      format.html { redirect_to user_videos_path(current_user), alert: "Step not found." if @video.nil? }
+      format.json { render json: @video}
+    end
   end
+  
 
   def destroy
     @video.destroy
