@@ -14,8 +14,13 @@ $(function(){
 });
 
 function videoListener(){
-  $('button').on('click', '#trigger', function(event){
-    var data = $(event.target).data();
-    $("div.panel-body[data='" + data +"']").html(Video.template);
+  $('li').on('click', '.trigger', function(event){
+    var videoId = $(event.target).data();
+    $('li div.panel-body').each(function(index, body){
+      if ($(this).data().id === videoId.id){
+        $(this).html(Video.template);
+       };
+    });
+  
   });
 }

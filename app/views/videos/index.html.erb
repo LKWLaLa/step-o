@@ -30,10 +30,10 @@
         <div class="panel panel-info">
           <div class="panel-heading">
             <%= link_to "#{video.title}", user_video_path(current_user, video)%>
-            <button id="trigger" data="<%= video.id%>">More</button>
+            <button class= "pull-right trigger" id="trigger" data-id="<%= video.id%>">More</button>
           </div><!--panel-heading-->
 
-           <div class="panel-body" data="<%= video.id%>">
+           <div class="panel-body" data-id="<%= video.id%>">
               <p class="col-sm-4">
                 Styles:<br> <%video.styles.uniq.each do |style|%>
                   <span class="label label-warning"><%=style.name%></span>
