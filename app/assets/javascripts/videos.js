@@ -1,3 +1,4 @@
+var indexContent = '';
 
 function Video(attributes){
   this.id = attributes.id;
@@ -10,17 +11,39 @@ function Video(attributes){
 $(function(){
   Video.templateSource = $("#video-template").html();
   Video.template = Handlebars.compile(Video.templateSource);
-  videoListener();
+  videoOpenListener();
+  videoCloseListener();
 });
 
-function videoListener(){
+function videoOpenListener(){
   $('li').on('click', '.trigger', function(event){
     var videoId = $(event.target).data();
-    $('li div.panel-body').each(function(index, body){
-      if ($(this).data().id === videoId.id){
-        $(this).html(Video.template);
-       };
+    $('li div.panel').each(function(index, body){
+      if ($(this).find('.panel-body').data().id === videoId.id){
+        indexContent = $(this).find('.panel-body').html();
+        $(this).find('.panel-body').html(Video.template);
+        $(this).find('.trigger').attr("class","revert pull-right").text("Close");
+       };;
     });
   
   });
 }
+
+function videoCloseListener(){
+  $('li').on('click', '.revert', function(event){
+     var videoId = $(event.target).data();
+    $('li div.panel').each(function(index, body){
+      if ($(this).find('.panel-body').data().id === videoId.id){
+        $(this).find('.panel-body').html(indexContent);
+        $(this).find('.revert').attr("class","trigger pull-right").text("More");
+       };;
+    });
+  
+  });
+}
+
+
+
+
+
+
