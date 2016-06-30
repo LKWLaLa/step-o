@@ -12,7 +12,7 @@ function Video(attributes){
 $(function(){
   Video.templateSource = $("#video-template").html();
   Video.template = Handlebars.compile(Video.templateSource);
-  user = $('.container#video_index').data().userId;
+  user = $('.container#videos_index').data().userId;
   videoOpenListener();
   videoCloseListener();
 });
