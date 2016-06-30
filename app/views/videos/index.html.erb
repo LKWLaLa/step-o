@@ -30,9 +30,10 @@
         <div class="panel panel-info">
           <div class="panel-heading">
             <%= link_to "#{video.title}", user_video_path(current_user, video)%>
+            <button id="trigger" data="<%= video.id%>">More</button>
           </div><!--panel-heading-->
 
-           <div class="panel-body">
+           <div class="panel-body" data="<%= video.id%>">
               <p class="col-sm-4">
                 Styles:<br> <%video.styles.uniq.each do |style|%>
                   <span class="label label-warning"><%=style.name%></span>
@@ -60,10 +61,9 @@
 
 
 <script  id="video-template" type="text/x-handlebars-template">
-     <div class="panel-body">
 
       <div class="youtube_container_show">
-         <iframe width="854" height="480" src= "http://www.youtube.com/embed/<%=YoutubeID.from({{url}}) %>" frameborder="0" allowfullscreen></iframe>
+         <iframe width="854" height="480" src= "http://www.youtube.com/embed/YoutubeID.from({{url}})" frameborder="0" allowfullscreen></iframe>
       </div><!--youtube_container_show-->
       
       <br><br>
@@ -77,7 +77,6 @@
         <a style="color: white; text-decoration: none;" href="/users/{{user_id}}/videos/{{id}}/edit">Edit Video</a>
       </button>
 
-    </div><!--panel body-->
 </script>
 
  
