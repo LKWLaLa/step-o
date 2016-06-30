@@ -5,7 +5,7 @@
 
    <form class=" dropdown-toggle-default pull-right">
   <h4>Filter by Style:</h4>
-    <%= select("style", "id", Style.all.map {|s| [s.name, s.id] }, {:include_blank => 'All'}) %>
+    <%= select("style", "id", Style.all.map {|s| [s.name, s.id] }, {:include_blank => 'All'}, style: "background-color: white;") %>
     <input type="submit" value="Submit" />
   </form><br><br>
 
@@ -57,6 +57,29 @@
   <%end%>
   </ol>
 </div> <!--container-->
+
+
+<script  id="video-template" type="text/x-handlebars-template">
+     <div class="panel-body">
+
+      <div class="youtube_container_show">
+         <iframe width="854" height="480" src= "http://www.youtube.com/embed/<%=YoutubeID.from({{url}}) %>" frameborder="0" allowfullscreen></iframe>
+      </div><!--youtube_container_show-->
+      
+      <br><br>
+
+      <div class="col-sm-12 well">Notes:<br> {{notes}}</div>
+
+
+      
+
+      <button class="btn btn-warning">
+        <a style="color: white; text-decoration: none;" href="/users/{{user_id}}/videos/{{id}}/edit">Edit Video</a>
+      </button>
+
+    </div><!--panel body-->
+</script>
+
  
 
 

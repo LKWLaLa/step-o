@@ -5,7 +5,7 @@
   text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
 }
 
-#show_page {
+#stripes {
   background-image: url('/assets/lines.jpg');
   background-size: cover;
 }
@@ -51,7 +51,8 @@
 .heading {
   text-align: left;
   padding-bottom: .5em;
-  color: gray;
+  color: black;
+  text-shadow: 1px 1px 1px white);
 }
 
 button > a {
@@ -68,4 +69,9 @@ button > a {
 .checkbox-inline.no_indent {
   margin-left: 0;
   margin-right: 20px;
+}
+
+#navwhitetext {
+  color: black;
+  text-shadow: 1px 1px 1px white;
 }
