@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="video_index" data-user-id="<%= current_user.id %>">
   <button class="btn btn-primary navbar-btn heading">
     <%= link_to "Add a New Video", new_user_video_path(current_user, @video) %>
   </button>
@@ -30,7 +30,7 @@
         <div class="panel panel-info">
           <div class="panel-heading">
             <%= link_to "#{video.title}", user_video_path(current_user, video)%>
-            <button class= "pull-right trigger" id="trigger" data-id="<%= video.id%>">More</button>
+            <button class= "pull-right trigger" id="trigger" data-id="<%= video.id%>">Show</button>
           </div><!--panel-heading-->
 
            <div class="panel-body" data-id="<%= video.id%>">
