@@ -2,6 +2,7 @@ var indexContent = '';
 var user = '';
 
 
+
 function Video(attributes){
   this.id = attributes.id;
   this.title = attributes.title;
@@ -38,6 +39,7 @@ function videoOpenListener(){
               indexContent = $(this).find('.panel-body').html();
               $(this).find('.panel-body').html(replacementHTML);
               $(this).find('.trigger').attr("class","revert pull-right").text("Close");
+              $(this).find('iframe').attr("src", "http://www.youtube.com/embed/" + YouTubeGetID(videoObject.url));
             };
          });      
       });
@@ -56,6 +58,19 @@ function videoCloseListener(){
        };;
     });
   });
+}
+
+function YouTubeGetID(url){
+  var ID = '';
+  url = url.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+  if(url[2] !== undefined) {
+    ID = url[2].split(/[^0-9a-z_\-]/i);
+    ID = ID[0];
+  }
+  else {
+    ID = url;
+  }
+    return ID;
 }
 
 
