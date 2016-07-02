@@ -13,6 +13,9 @@
     <%= text_field_tag :search, params[:search], placeholder: "Search all steps" %>
     <%= submit_tag "Search" %>
   <% end %>
+
+    <%= page_entries_info @steps %><br>
+    <%= paginate @steps %>
  
 
     <h2 class="heading">My Steps:</h2>
