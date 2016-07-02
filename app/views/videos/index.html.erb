@@ -29,28 +29,31 @@
       <li>
         <div class="panel panel-info">
           <div class="panel-heading">
-            <%= link_to "#{video.title}", user_video_path(current_user, video)%>
-            <button class= "pull-right trigger" id="trigger" data-id="<%= video.id%>">Show</button>
+            <%= link_to "#{video.title} - #{video.year}", user_video_path(current_user, video)%>
+             <button class= "pull-right trigger" id="trigger" data-id="<%= video.id%>">Show</button><br>
+
+            <%video.styles.uniq.each do |style|%>
+              <span class="label label-warning"><%=style.name%></span>
+            <%end%>
+
+           
           </div><!--panel-heading-->
 
            <div class="panel-body" data-id="<%= video.id%>">
-              <p class="col-sm-4">
-                Styles:<br> <%video.styles.uniq.each do |style|%>
-                  <span class="label label-warning"><%=style.name%></span>
-                <%end%><br><br>
-                Year: <%=video.year%><br>
-              </p>
+              <div class ="row">
+                <div class="col-sm-4">    
+                  Associated Steps:<br>
+                  <ul>
+                    <%video.steps.uniq.each do |step|%>
+                      <li><span><%= link_to "#{step.name}", user_step_path(current_user, step)%></span></li>
+                    <%end%>
+                  </ul>
+                </div>
 
-            <div class="col-sm-4 well">Notes:<br> <%=video.notes%></div>
+                  <div class="col-sm-6 well">Notes:<br> <%=video.notes%></div>
+              </div>
+            
           
-            <div class="col-sm-4">     
-              Associated Steps:
-              <ul>
-                <%video.steps.uniq.each do |step|%>
-                  <li><%= link_to "#{step.name}", user_step_path(current_user, step)%></li>
-                <%end%>
-              </ul>
-            </div>
 
         </div> <!--panel body-->
       </div> <!--panel-->
@@ -71,7 +74,16 @@
 
       <div class="col-sm-12 well">Notes:<br> {{notes}}</div>
 
+      <h3>My steps:</h3>
 
+        <ol>
+         {{#each timemarkers}}
+            <li><h4><a href="/users/{{step.user_id}}/steps/{{step.id}}">{{step.name}}</a>
+                 -  at: {{marker}}</h4>
+            Current level of mastery: {{step.level_of_mastery}}
+            </li><br>
+          {{/each}}
+        </ol>
       
 
       <button class="btn btn-warning">
