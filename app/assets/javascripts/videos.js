@@ -38,9 +38,11 @@ function videoOpenListener(){
           $('li div.panel').each(function(index, body){
             if ($(this).find('.panel-body').data().id === videoId){
               var indexHTML = $(this).find('.panel-body').html();
+              $(this).find('.panel-body').hide();
               $(this).find('.panel-body').html(replacementHTML);
+              $(this).find('.panel-body').slideDown();
               $(this).data( 'old_html', indexHTML );
-              $(this).find('.trigger').attr("class","revert pull-right").text("Close");
+              $(this).find('.trigger').attr("class","revert pull-right btn btn-primary").text("Close");
               $(this).find('iframe').attr("src", "http://www.youtube.com/embed/" + YouTubeGetID(videoObject.url));
             };
          });      
@@ -56,11 +58,14 @@ function videoCloseListener(){
     $('li div.panel').each(function(index, body){
       if ($(this).find('.panel-body').data().id === videoId.id){
         $(this).find('.panel-body').html($(this).data().old_html);
-        $(this).find('.revert').attr("class","trigger pull-right").text("Show");
+        $(this).find('.revert').attr("class","trigger pull-right btn btn-primary").text("Show");
        };;
     });
   });
 }
+
+
+// YouTubeGetID function found at:  https://gist.github.com/takien/4077195
 
 function YouTubeGetID(url){
   var ID = '';
