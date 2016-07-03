@@ -27,7 +27,7 @@
 
     <ol>
       <%@videos.order(:title).each do |video|%>
-      <li>
+      <li data-count='{absolute_count}'>
         <div class="panel panel-info">
           <div class="panel-heading">
             <%= link_to "#{video.title} - #{video.year}", user_video_path(current_user, video)%>

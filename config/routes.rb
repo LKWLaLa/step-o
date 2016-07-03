@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :videos, only: [:index, :new, :edit, :show, :destroy]
     resources :steps, only: [:index, :new, :edit, :show, :destroy]
   end
+
+  resources :styles, only: [:index, :new, :create, :destroy]
     
   
 

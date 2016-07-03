@@ -71,8 +71,10 @@ button > a {
   margin-right: 20px;
 }
 
-#navwhitetext {
+#navblacktext {
   color: black;
   text-shadow: 1px 1px 1px white;
 }
+
+
 
