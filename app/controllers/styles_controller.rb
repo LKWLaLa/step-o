@@ -4,19 +4,16 @@ class StylesController < ApplicationController
 
   def index
     @styles = Style.all 
+     respond_to do |format|
+      format.html { render :index}
+      format.json { render json: @styles}
+    end
   end
 
-  def new
-    @style = Style.new()
-  end
 
   def create
     @style = Style.create(style_params)
-    if @style.save
-      
-    else
-      render :new
-    end
+    render json: @style, status: 201    
   end
 
    def destroy

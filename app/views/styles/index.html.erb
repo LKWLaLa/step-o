@@ -4,10 +4,10 @@
 
   <div class="jumbotron col-sm-6">
       Add a new style here:
-       <input type="text"  style="height: 2em;">
-        <button class="btn btn-info pull-right">Add</button><br><br>
+       <input id="style_input" type="text"  style="height: 2em;">
+        <button id="style_button" class="btn btn-info pull-right">Add</button><br><br>
         (Or click "x" to delete an existing style) <br><br>
-        
+
     <div class="row col-sm-4">
       <% @styles.order(:name).each do |style| %>
         <li class="label label-success checkbox-inline no_indent"><%=style.name%></li><span>x</span> <br> 

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :steps, only: [:index, :new, :edit, :show, :destroy]
   end
 
-  resources :styles, only: [:index, :new, :create, :destroy]
+  resources :styles, only: [:index, :create, :destroy]
     
   
 
