@@ -5,6 +5,9 @@
   <div class="jumbotron col-sm-6">
       Add a new style here:
        <input id="style_input" type="text"  style="height: 2em;">
+      <!--CSRF addition-->
+       <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+       <!--End CSRF addition-->
         <button id="style_button" class="btn btn-info pull-right">Add</button><br><br>
         (Or click "x" to delete an existing style) <br><br>
 

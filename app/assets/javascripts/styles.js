@@ -11,17 +11,21 @@ $(function(){
 function addStyleListener(){
   $("#style_button").click(function() {
     var newStyle = $("#style_input").val();
+    //CSRF Addition
+    var token = $("authenticity_token").val();
+    //End CSRF Addition
     debugger;
 
-    posting = $.ajax({
-    url: '/styles',
+    $.ajax({
+    url: 'http://localhost:3000/styles',
     method: 'POST',
     data: {
-      name: newStyle
+      name: newStyle,
+      //CSRF Addition
+      authenticity_token: token
+      //CSRF Chad Addition
     }
-  });
-
-    posting.success(function(data) {
+  }).done(function(data) {
       debugger;
       console.log(data);
     });  

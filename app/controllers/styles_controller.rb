@@ -12,7 +12,7 @@ class StylesController < ApplicationController
 
 
   def create
-    @style = Style.create(style_params)
+    @style = Style.create(name: params["name"])
     render json: @style, status: 201    
   end
 
