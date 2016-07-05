@@ -13,18 +13,16 @@ class StylesController < ApplicationController
 
   def create
     @style = Style.create(name: params["name"])
-    render json: @style, status: 201    
+    if @style.save
+       render json: @style, status: 201  
+    else  
+      redirect_to :index
+    end
   end
 
    def destroy
     @style.destroy
     
-  end
-
-  private
-
-  def style_params
-    params.require(:style).permit(:name, :id)
   end
 
 end
