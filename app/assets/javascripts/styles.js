@@ -3,6 +3,16 @@ function Style(attributes){
   this.name = attributes.name;
 } 
 
+Style.prototype.template = function(){
+   var template = '<li class="label label-success checkbox-inline no_indent"';
+   template += 'data-id="'+ this.id + '">' + this.name + '</li>';
+   template += '<span id="style_delete" data-id="' + this.id + '">x</span><br>';
+   template += '<br style="display:none;"><div class="well row" style="display: none;">';
+   return template;
+};
+
+
+
 $(function(){
   addStyleListener();
   deleteStyleListener();
@@ -26,11 +36,7 @@ function addStyleListener(){
     }
   }).done(function(data) {
      style = new Style(data);
-     var template = '<li class="label label-success checkbox-inline no_indent"'
-     template += 'data-id="'+ style.id + '">' + style.name + '</li>'
-     template += '<span id="style_delete" data-id="' + style.id + '">x</span><br>'
-     template += '<br style="display:none;"><div class="well row" style="display: none;">'
-     $('#styles_list').prepend(template);
+     $('#styles_list').prepend(style.template());
      $('#style_input').val(''); 
     }); 
   });
