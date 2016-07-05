@@ -26,7 +26,11 @@ function addStyleListener(){
     }
   }).done(function(data) {
      style = new Style(data);
-     $('#styles_list').prepend('<li class="label label-success checkbox-inline no_indent" data-id="'+ style.id + '">' + style.name + '</li><span id="style_delete" data-id="' + style.id + '">x</span><br>');
+     var template = '<li class="label label-success checkbox-inline no_indent"'
+     template += 'data-id="'+ style.id + '">' + style.name + '</li>'
+     template += '<span id="style_delete" data-id="' + style.id + '">x</span><br>'
+     template += '<br style="display:none;"><div class="well row" style="display: none;">'
+     $('#styles_list').prepend(template);
      $('#style_input').val(''); 
     }); 
   });
