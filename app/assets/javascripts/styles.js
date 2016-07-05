@@ -6,6 +6,7 @@ function Style(attributes){
 $(function(){
   addStyleListener();
   deleteStyleListener();
+  showStepsListener();
 });
 
 
@@ -26,12 +27,13 @@ function addStyleListener(){
   }).done(function(data) {
      style = new Style(data);
      $('#styles_list').prepend('<li class="label label-success checkbox-inline no_indent" data-id="'+ style.id + '">' + style.name + '</li><span id="style_delete" data-id="' + style.id + '">x</span><br>');
+     $('#style_input').val(''); 
     }); 
   });
  }
 
  function deleteStyleListener(){
-  $('span#style_delete').click(function(event){
+  $('div#styles_list').on('click', 'span#style_delete', function(event){
     var styleId = $(event.target).data().id;
 
      if (confirm("Are you sure you want to delete this style?")) {
@@ -46,4 +48,10 @@ function addStyleListener(){
       }
       return false;    
   });
+ }
+
+ function showStepsListener(){
+  $('div#styles_list').on('click', 'li.label', function(event){
+    $(event.target).nextAll('.well:first').toggle().prev('br').toggle();
+  })
  }

@@ -3,17 +3,26 @@
 <h4>Dance Styles:</h4>
 
   <div class="jumbotron col-sm-6">
+       Click on a style tag to see all associated steps,<br> 
+       or click "x" to delete a style from your account. <br><br>
+
       Add a new style here:
        <input id="style_input" type="text"  style="height: 2em;">
       <!--CSRF addition-->
        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
        <!--End CSRF addition-->
         <button id="style_button" class="btn btn-info pull-right">Add</button><br><br>
-        (Or click "x" to delete an existing style) <br><br>
 
-    <div id="styles_list" class="row col-sm-4">
+    <div id="styles_list" class="row col-sm-6">
       <% @styles.order(:name).each do |style| %>
-        <li class="label label-success checkbox-inline no_indent" data-id="<%=style.id%>"><%=style.name%></li><span id="style_delete" data-id="<%=style.id%>">x</span> <br> 
+        <li class="label label-success checkbox-inline no_indent" data-id="<%=style.id%>"><%=style.name%></li>
+        <span id="style_delete" data-id="<%=style.id%>">x</span><br>
+
+        <br style="display:none"><div class="well row" style="display: none;">
+          <% style.steps.each do |step| %>
+            <li><%= step.name%></li>
+          <% end %>
+        </div><!--well-->
       <% end %>
   </div>
 </div>
