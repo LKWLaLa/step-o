@@ -18,8 +18,8 @@
         <li class="label label-success checkbox-inline no_indent" data-id="<%=style.id%>"><%=style.name%></li>
         <span id="style_delete" data-id="<%=style.id%>">x</span><br>
 
-        <br style="display:none"><div class="well row" style="display: none;">
-          <% style.steps.each do |step| %>
+        <br style="display:none"><div class="well row" style="display: none; font-size: .8em;">
+          <% style.steps.order(:name).each do |step| %>
             <li><%= step.name%></li>
           <% end %>
         </div><!--well-->
