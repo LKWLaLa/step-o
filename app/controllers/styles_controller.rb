@@ -21,8 +21,9 @@ class StylesController < ApplicationController
   end
 
    def destroy
+    @style = Style.find_by(id: params[:id])
     @style.destroy
-    
+     render json: {}, status: 204    
   end
 
 end

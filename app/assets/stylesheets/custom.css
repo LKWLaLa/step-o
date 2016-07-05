@@ -76,5 +76,10 @@ button > a {
   text-shadow: 1px 1px 1px white;
 }
 
+span#style_delete {
+  cursor: pointer;
+}
+
+
 
 

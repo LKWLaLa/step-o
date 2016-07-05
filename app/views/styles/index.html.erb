@@ -13,7 +13,7 @@
 
     <div id="styles_list" class="row col-sm-4">
       <% @styles.order(:name).each do |style| %>
-        <li class="label label-success checkbox-inline no_indent"><%=style.name%></li><span>x</span> <br> 
+        <li class="label label-success checkbox-inline no_indent" data-id="<%=style.id%>"><%=style.name%></li><span id="style_delete" data-id="<%=style.id%>">x</span> <br> 
       <% end %>
   </div>
 </div>
