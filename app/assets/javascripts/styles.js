@@ -53,6 +53,8 @@ function addStyleListener(){
             method: 'DELETE'
             }).done(function(data) {
               $('[data-id=' + styleId + ']').next('br').remove();
+              $('[data-id=' + styleId + ']').next('br').remove();
+              $('[data-id=' + styleId + ']').nextAll('.well:first').remove();
               $('[data-id=' + styleId + ']').remove();
            });    
       }
