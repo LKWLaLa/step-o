@@ -11,23 +11,20 @@ $(function(){
 function addStyleListener(){
   $("#style_button").click(function() {
     var newStyle = $("#style_input").val();
-    //CSRF Addition
+    
     var token = $("authenticity_token").val();
-    //End CSRF Addition
-    debugger;
+   
 
     $.ajax({
     url: 'http://localhost:3000/styles',
     method: 'POST',
     data: {
-      name: newStyle,
-      //CSRF Addition
-      authenticity_token: token
-      //CSRF Chad Addition
+      name: newStyle,     
+      authenticity_token: token    
     }
   }).done(function(data) {
-      debugger;
-      console.log(data);
+     style = new Style(data);
+     $('#styles_list').prepend('<li class="label label-success checkbox-inline no_indent">' + style.name + '</li><span>x</span><br>');
     });  
 
   });
