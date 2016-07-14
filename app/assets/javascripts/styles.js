@@ -7,7 +7,7 @@ Style.prototype.template = function(){
    var template = '<li class="label label-success checkbox-inline no_indent"';
    template += 'data-id="'+ this.id + '">' + this.name + '</li>';
    template += '<span id="style_delete" data-id="' + this.id + '">x</span><br>';
-   template += '<br style="display:none;"><div class="well row" style="display: none;">';
+   template += ' <div class="well_container" style="display: none;"><br><div class="well row"></div></div>';
    return template;
 };
 
@@ -53,8 +53,7 @@ function addStyleListener(){
             method: 'DELETE'
             }).done(function(data) {
               $('[data-id=' + styleId + ']').next('br').remove();
-              $('[data-id=' + styleId + ']').next('br').remove();
-              $('[data-id=' + styleId + ']').nextAll('.well:first').remove();
+              $('[data-id=' + styleId + ']').nextAll('.well_container:first').remove();
               $('[data-id=' + styleId + ']').remove();
            });    
       }
@@ -64,6 +63,6 @@ function addStyleListener(){
 
  function showStepsListener(){
   $('div#styles_list').on('click', 'li.label', function(event){
-    $(event.target).nextAll('.well:first').toggle().prev('br').toggle();
+    $(event.target).nextAll('.well_container:first').slideToggle("slow");
   })
  }
