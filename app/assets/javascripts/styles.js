@@ -1,3 +1,10 @@
+$(function(){
+  addStyleListener();
+  deleteStyleListener();
+  showStepsListener();
+});
+
+
 function Style(attributes){
   this.id = attributes.id;
   this.name = attributes.name;
@@ -10,14 +17,6 @@ Style.prototype.template = function(){
    template += ' <div class="well_container" style="display: none;"><br><div class="well row"></div></div>';
    return template;
 };
-
-
-
-$(function(){
-  addStyleListener();
-  deleteStyleListener();
-  showStepsListener();
-});
 
 
 function addStyleListener(){
@@ -57,7 +56,7 @@ function addStyleListener(){
               $('[data-id=' + styleId + ']').remove();
            });    
       }
-      return false;    
+      return false; //should this be event.preventDefault()?//   
   });
  }
 
