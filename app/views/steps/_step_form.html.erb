@@ -25,7 +25,7 @@
    <div class="row">   
 
       <%= f.label :style_ids, "Associated Styles:" %><br>
-      <%= f.collection_check_boxes :style_ids, Style.all, :id, :name do |cb| %>
+      <%= f.collection_check_boxes :style_ids, current_user.styles, :id, :name do |cb| %>
         <%= cb.label class:"checkbox-inline no_indent" do %>
           <%= cb.check_box + cb.text%>
         <%end%>
