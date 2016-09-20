@@ -12,11 +12,9 @@ class StylesController < ApplicationController
 
 
   def create
-    @style = Style.create(name: params["name"])
+    @style = Style.create(name: params[:name], user_id: params[:user_id])
     if @style.save
        render json: @style, status: 201  
-    else  
-      redirect_to :index
     end
   end
 
