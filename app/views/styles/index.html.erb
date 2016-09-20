@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container" id="styles_index" data-user-id="<%= current_user.id %>">
 <h4>Dance Styles:</h4>
 
   <div class="jumbotron col-sm-6">
@@ -14,7 +14,7 @@
         <button id="style_button" class="btn btn-info pull-right">Add</button><br><br>
 
     <div id="styles_list" class="row col-sm-6">
-      <% @styles.order(:name).each do |style| %>
+      <% current_user.styles.order(:name).each do |style| %>
         <li class="label label-success checkbox-inline no_indent" data-id="<%=style.id%>"><%=style.name%></li>
         <span id="style_delete" data-id="<%=style.id%>">x</span><br>
 

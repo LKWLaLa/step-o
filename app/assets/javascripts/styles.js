@@ -1,4 +1,7 @@
+var user = '';
+
 $(function(){
+  user = $('.container#styles_index').data().userId;
   addStyleListener();
   deleteStyleListener();
   showStepsListener();
@@ -27,11 +30,12 @@ function addStyleListener(){
    
 
     $.ajax({
-    url: 'http://localhost:3000/styles',
+    url: 'http://localhost:3000/users/' + user +'/styles',
     method: 'POST',
     data: {
       name: newStyle,     
-      authenticity_token: token    
+      authenticity_token: token,
+      user_id: user    
     }
   }).done(function(data) {
      style = new Style(data);
@@ -48,7 +52,7 @@ function addStyleListener(){
      if (confirm("Are you sure you want to delete this style?")) {
 
            $.ajax({
-            url: 'http://localhost:3000/styles/' + styleId,
+            url: 'http://localhost:3000/users/' + user + '/styles/' + styleId,
             method: 'DELETE'
             }).done(function(data) {
               $('[data-id=' + styleId + ']').next('br').remove();
