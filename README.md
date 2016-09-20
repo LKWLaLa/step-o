@@ -15,7 +15,7 @@ Users can navigate the app by viewing either the steps index or the videos index
 
 ###Dependencies:
 
-Step-O is built with Rails version 4.2.6, using Ruby version 2.2.3p173, and a sqlite3 database. The app also uses the jquery-rails, devise, omniauth, omniauth-facebook, and youtube_id gems. You will need to obtain a facebook key and facebook secret for full OAuth2 functionality.
+Step-O is built with Rails version 4.2.6, using Ruby version 2.2.3p173, and a sqlite3 database. The app also uses the jquery-rails, devise, omniauth, omniauth-facebook, and kaminari gems. You will need to obtain a facebook key and facebook secret for full OAuth2 functionality.
 
 ###Installation Guide:
 

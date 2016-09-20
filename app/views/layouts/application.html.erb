@@ -9,20 +9,23 @@
     <meta name="author" content="">
 
   <title>Step-O</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all'%> <!--'data-turbolinks-track' => true -->
+  <%= javascript_include_tag 'application'%> 
+<!--CSRF Addition-->
   <%= csrf_meta_tags %>
+  <!--End CSRF Addition-->
 
-   <!-- Bootstrap Core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
+   <!-- Bootstrap Core CSS 
+    <link href="/css/bootstrap.min.css" rel="stylesheet">-->
+
+    <!--Custom CSS 
     <link href="/css/landing-page.css" rel="stylesheet">
-    <link href="/css/custom.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet"> -->
 
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <!-- Custom Fonts
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,7 +47,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand navbar-left" href="/">Step-O Home</a>
+                <a class="navbar-brand navbar-left" id="navwhitetext" href="/">Step-O Home</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
@@ -53,13 +56,22 @@
                 <% if user_signed_in? %>
                     
                     <li>
-                        <%= link_to "My Steps", user_steps_path(current_user)%>
+                        <%= link_to "Steps", user_steps_path(current_user),:id => "navblacktext" %>
                     </li>
                     <li>
-                        <%= link_to "My Videos", user_videos_path(current_user)%>
+                        <%= link_to "Videos", user_videos_path(current_user), :id => "navblacktext" %>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" id="navblacktext" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a id="navblacktext" href="/styles">Styles</a></li>
+                        
+                        <li role="separator" class="divider"></li>
+                        <li><a id="navblacktext" href="#">My Account</a></li>
+                      </ul>
                     </li>
                     <li>
-                      <button class="btn btn-success navbar-btn"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></button>
+                      <button class="btn btn-success navbar-btn"><%= link_to "Log Out", destroy_user_session_path, method: :delete, :style => "color: white;" %></button>
                     </li>
                 </ul>
             </div>

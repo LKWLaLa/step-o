@@ -6,11 +6,11 @@ class StepsController < ApplicationController
 
   def index
     if params[:search]
-      @steps = current_user.steps.search(params[:search])
+      @steps = current_user.steps.search(params[:search]).page(params[:page])
     elsif params[:style] && params[:style][:id].present?
-      @steps = current_user.steps.filter_by_style(params[:style][:id])
+      @steps = current_user.steps.filter_by_style(params[:style][:id]).page(params[:page])
     else
-      @steps = current_user.steps
+      @steps = current_user.steps.order(:name).page(params[:page])
     end
   end
 
@@ -42,7 +42,10 @@ class StepsController < ApplicationController
   end
 
   def show
-    redirect_to user_steps_path(current_user), alert: "Step not found." if @step.nil?
+     respond_to do |format|
+      format.html { redirect_to user_steps_path(current_user), alert: "Step not found." if @step.nil? }
+      format.json { render json: @step}
+    end
   end
 
   def destroy

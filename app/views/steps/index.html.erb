@@ -1,4 +1,3 @@
-
 <div class="container">
   <button class="btn btn-primary">
       <%= link_to "Add a New Step", new_user_step_path(current_user, @step) %>
@@ -6,7 +5,7 @@
   
   <form class=" dropdown-toggle-default pull-right">
   <h4>Filter by Style:</h4>
-    <%= select("style", "id", Style.all.map {|s| [s.name, s.id] }, {:include_blank => 'All'}) %>
+    <%= select("style", "id", Style.all.map {|s| [s.name, s.id] }, {:include_blank => 'All'}, style: "background-color: white;") %>
     <input type="submit" value="Filter" />
   </form><br><br><br>
 
@@ -14,6 +13,9 @@
     <%= text_field_tag :search, params[:search], placeholder: "Search all steps" %>
     <%= submit_tag "Search" %>
   <% end %>
+
+    <%= page_entries_info @steps %><br>
+    <%= paginate @steps %>
  
 
     <h2 class="heading">My Steps:</h2>
@@ -58,8 +60,6 @@
       <%end%>
    </ol>
 
-</div> <!--container-->
-
-  
+</div> <!--container-->  
     
   

@@ -6,11 +6,11 @@ class VideosController < ApplicationController
 
   def index
     if params[:search]
-      @videos = current_user.videos.search(params[:search])
+      @videos = current_user.videos.search(params[:search]).page(params[:page])
     elsif params[:style] && params[:style][:id].present?
-      @videos = current_user.videos.filter_by_style(params[:style][:id])
+      @videos = current_user.videos.filter_by_style(params[:style][:id]).page(params[:page])
     else
-      @videos = current_user.videos
+      @videos = current_user.videos.order(:title).page(params[:page])
     end
   end
 
@@ -42,8 +42,12 @@ class VideosController < ApplicationController
   end
 
   def show
-    redirect_to user_videos_path(current_user), alert: "Video not found." if @video.nil?
+   respond_to do |format|
+      format.html { redirect_to user_videos_path(current_user), alert: "Video not found." if @video.nil? }
+      format.json { render json: @video}
+    end
   end
+  
 
   def destroy
     @video.destroy
