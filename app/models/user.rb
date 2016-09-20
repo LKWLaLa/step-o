@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   has_many :videos
   has_many :steps
+  has_many :styles
 
    def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

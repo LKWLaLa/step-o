@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160514190838) do
+ActiveRecord::Schema.define(version: 20160920202949) do
 
   create_table "step_styles", force: :cascade do |t|
     t.integer  "step_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20160514190838) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   create_table "timemarkers", force: :cascade do |t|
