@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
 
   def edit
+    redirect_to root_path, alert: "The information you entered is not valid." if @user.id != current_user.id
   end
 
   def update

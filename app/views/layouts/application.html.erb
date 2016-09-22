@@ -67,7 +67,7 @@
                         <li><%= link_to "Styles", user_styles_path(current_user), :id => "navblacktext" %></li>
                         
                         <li role="separator" class="divider"></li>
-                        <li><a id="navblacktext" href="#">My Account</a></li>
+                        <li><%= link_to "My Account", edit_user_path(current_user), :id => "navblacktext" %></li>
                       </ul>
                     </li>
                     <li>
