@@ -13,7 +13,7 @@ class Step < ActiveRecord::Base
    def styles_attributes=(new_styles_hash)
     new_styles_hash.values.each do |attributes|
       if attributes[:name].present?
-        style = Style.find_or_create_by(name: attributes[:name])
+        style = Style.find_or_create_by(name: attributes[:name], user_id: attributes[:user_id])
         self.step_styles.build(:style => style)
       end
     end

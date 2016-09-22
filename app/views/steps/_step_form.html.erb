@@ -31,10 +31,12 @@
         <%end%>
 
     <% end %>
+    <br>
 
  
     <%= f.fields_for :styles, @step.styles.build do |s| %>
-    <br>Add a new style:  <%= s.text_field :name %><br>
+      <br>Add a new style:  <%= s.text_field :name %><br>
+      <%= s.hidden_field :user_id, :value => params[:user_id]  %>
     <% end %>
    
       <br><br>
