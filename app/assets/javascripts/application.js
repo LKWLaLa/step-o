@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap.min
 //= require handlebars-v4.0.5
+//= require jquery-readyselector
 //= require_tree .

@@ -2,7 +2,7 @@
 var user = '';
 
 
-$(function(){  
+$(".videos.index").ready(function(){  
   user = $('.container#videos_index').data().userId;
   addTemplateToVideo();
   videoOpenListener();

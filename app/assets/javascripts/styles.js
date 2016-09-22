@@ -1,6 +1,6 @@
 var user = '';
 
-$(function(){
+$(".styles.index").ready(function(){
   user = $('.container#styles_index').data().userId;
   addStyleListener();
   deleteStyleListener();
