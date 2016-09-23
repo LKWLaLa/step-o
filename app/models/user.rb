@@ -7,9 +7,9 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true, uniqueness: true
 
-  has_many :videos
-  has_many :steps
-  has_many :styles
+  has_many :videos, dependent: :destroy
+  has_many :steps, dependent: :destroy
+  has_many :styles, dependent: :destroy
 
    def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
