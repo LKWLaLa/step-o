@@ -9,7 +9,9 @@
 
 <%= render 'video_form'%>
 
-<%= link_to "Delete Video", user_video_path(current_user, @video), :method => "delete", :class => "text-danger pull-right", data: { confirm: "Delete this from your library?" } %>
+<%= link_to "Delete Video", user_video_path(current_user, @video), :method => "delete", :class => "text-danger pull-right", data: { confirm: "Delete this from your library?" } %><br><br>
+
+<%= link_to "<< Back to video", user_video_path(current_user, @video)%>
 
 </div> <!--jumbotron-->
 </div> <!--container-->
