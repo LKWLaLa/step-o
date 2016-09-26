@@ -42,34 +42,48 @@
       <br><br>
   </div> <!--row3-->    
 
-      <h3>Videos (add new at bottom of page):</h3><br>
+      <h4>Videos (add new at bottom of page):</h4><br>
 
       <%= f.fields_for :timemarkers, @step.timemarkers.build do |t| %>
 
        <% if !t.object.persisted? %>
-         <h3> Add a new video:</h3><br>
+         <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Associate another video
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#">From my library</a></li>
+                <li><a href="#">Add New</a></li>
+              </ul>
+          </div><br><br>
         <% end %>
 
     <div class="row">
       <div class="col-sm-12"> 
-        <%= t.label :marker, "Timestamp where step occurs (required)*:"%>
-        <%= t.text_field :marker %><br><br>
 
+        <div class="timestamp_field">
+          <%= t.label :marker, "Timestamp where step occurs (required)*:"%>
+          <%= t.text_field :marker %><br><br>
+        </div>
 
-        <%= t.fields_for :video, @step.timemarkers.build.build_video do |v| %>
-          <%= v.label :url, "URL:" %>
-          <%= v.text_field :url, :class => "url_field" %><br> 
-          <%= v.label :title, "Title:" %>      
-          <%= v.text_field :title, :class => "title_field" %><br>
-          <%= v.label :year, "Year:" %>
-          <%= v.text_field :year, :class => "year_field" %><br>
-         <br><br>  
+        <div class="new_video_fields_group">
+          <%= t.fields_for :video, @step.timemarkers.build.build_video do |v| %>
+            <%= v.label :url, "URL:" %>
+            <%= v.text_field :url, :class => "url_field" %><br> 
+            <%= v.label :title, "Title:" %>      
+            <%= v.text_field :title, :class => "title_field" %><br>
+            <%= v.label :year, "Year:" %>
+            <%= v.text_field :year, :class => "year_field" %><br>
+           <br><br> 
+        </div> 
            
-
-         <% if !v.object.persisted? %>
-           <%= v.label :id, "Choose an existing video:" %>
-            <%= v.collection_select(:id, current_user.videos.order(:title), :id, :title, include_blank: true )%> <br>
-          <% end %><br><br>
+        <div class="video_dropdown">
+           <% if !v.object.persisted? %>
+             <%= v.label :id, "Video:" %>
+              <%= v.collection_select(:id, current_user.videos.order(:title), :id, :title, include_blank: true )%> <br>
+            <% end %>
+        <div><br><br>
        
       </div>
     </div><br><!--row 4-->        
