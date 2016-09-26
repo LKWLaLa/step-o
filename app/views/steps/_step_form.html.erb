@@ -44,7 +44,7 @@
 
       <h3>Videos (add new at bottom of page):</h3><br>
 
-      <%= f.fields_for :timemarkers do |t| %>
+      <%= f.fields_for :timemarkers, @step.timemarkers.build do |t| %>
 
        <% if !t.object.persisted? %>
          <h3> Add a new video:</h3><br>
@@ -56,11 +56,13 @@
         <%= t.text_field :marker %><br><br>
 
 
-        <%= t.fields_for :video do |v| %>
+        <%= t.fields_for :video, @step.timemarkers.build.build_video do |v| %>
            <%= v.label :title, "Title:" %>      
           <%= v.text_field :title %><br>
           <%= v.label :year, "Year:" %>
-          <%= v.text_field :year %>
+          <%= v.text_field :year %><br>
+           <%= v.label :url, "URL:" %>
+        <%= v.text_field :url %>  
            
       </div>
 
@@ -69,8 +71,7 @@
            <%= v.label :id, "Add a video from your collection:" %>
             <%= v.collection_select(:id, current_user.videos.order(:title), :id, :title, include_blank: true )%> - (Or new video info below):<br>
           <% end %><br><br>
-        <%= v.label :url, "URL:" %><br>
-        <%= v.text_field :url, class:"col-sm-8" %>  
+       
       </div>
     </div><br><!--row 4-->        
 
