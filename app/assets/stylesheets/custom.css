@@ -80,6 +80,15 @@ span#style_delete {
   cursor: pointer;
 }
 
+.url_field {
+  width: 50%;
+}
 
+.title_field {
+  width: 35%;
+}
 
+.year_field {
+  width: 15%;
+}
 

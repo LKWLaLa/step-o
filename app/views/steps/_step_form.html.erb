@@ -51,25 +51,24 @@
         <% end %>
 
     <div class="row">
-      <div class="col-sm-4"> 
-        <%= t.label :marker, "Timestamp where step occurs:"%>
+      <div class="col-sm-12"> 
+        <%= t.label :marker, "Timestamp where step occurs (required)*:"%>
         <%= t.text_field :marker %><br><br>
 
 
         <%= t.fields_for :video, @step.timemarkers.build.build_video do |v| %>
-           <%= v.label :title, "Title:" %>      
-          <%= v.text_field :title %><br>
+          <%= v.label :url, "URL:" %>
+          <%= v.text_field :url, :class => "url_field" %><br> 
+          <%= v.label :title, "Title:" %>      
+          <%= v.text_field :title, :class => "title_field" %><br>
           <%= v.label :year, "Year:" %>
-          <%= v.text_field :year %><br>
-           <%= v.label :url, "URL:" %>
-        <%= v.text_field :url %>  
+          <%= v.text_field :year, :class => "year_field" %><br>
+         <br><br>  
            
-      </div>
 
-      <div class="col-sm-8">
          <% if !v.object.persisted? %>
-           <%= v.label :id, "Add a video from your collection:" %>
-            <%= v.collection_select(:id, current_user.videos.order(:title), :id, :title, include_blank: true )%> - (Or new video info below):<br>
+           <%= v.label :id, "Choose an existing video:" %>
+            <%= v.collection_select(:id, current_user.videos.order(:title), :id, :title, include_blank: true )%> <br>
           <% end %><br><br>
        
       </div>
