@@ -47,16 +47,17 @@
       <%= f.fields_for :timemarkers, @step.timemarkers.build do |t| %>
 
        <% if !t.object.persisted? %>
-         <div class="dropdown">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+         <div class="dropdown add_video">
+              <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Associate another video
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a href="#">From my library</a></li>
-                <li><a href="#">Add New</a></li>
+                <li><a href="#" id="from_library">From my library</a></li>
+                <li><a href="#" id="add_new">Add New</a></li>
               </ul>
-          </div><br><br>
+          </div>
+          <a href="#" id="cancel">Cancel</a><br><br>
         <% end %>
 
     <div class="row">
