@@ -93,7 +93,7 @@ span#style_delete {
 }
 
 .timestamp_field {
-  
+  display: none;
 }
 
 .new_video_fields_group {
@@ -101,7 +101,11 @@ span#style_delete {
 }
 
 .video_dropdown {
-  
+  display: none;
+}
+
+div.add_video {
+  display: inline-block;
 }
 
 
