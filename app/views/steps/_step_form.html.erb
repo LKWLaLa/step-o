@@ -24,7 +24,7 @@
 
    <div class="row">   
 
-      <%= f.label :style_ids, "Associated Styles:" %><br>
+      <%= f.label :style_ids, "Style Tags:" %><br>
       <%= f.collection_check_boxes :style_ids, current_user.styles, :id, :name do |cb| %>
         <%= cb.label class:"checkbox-inline no_indent" do %>
           <%= cb.check_box + cb.text%>
@@ -42,7 +42,17 @@
       <br><br>
   </div> <!--row3-->    
 
-      <h4>Videos (add new at bottom of page):</h4><br>
+      <h4>Videos:</h4>
+
+      <ul class="list-group timemarkers">
+        <%@step.timemarkers.each do |tm|%>
+          <li class="list-group-item">
+            <%=tm.video.title%> (<%=tm.video.year%>) -  at: <%=tm.marker%>
+            <span class="pull-right" style="color: red;">X</span>
+          </li>
+        <%end%>
+      </ul>
+      <br><br>
 
       <%= f.fields_for :timemarkers, @step.timemarkers.build do |t| %>
 
@@ -57,7 +67,7 @@
                 <li><a href="#" id="add_new">Add New</a></li>
               </ul>
           </div>
-          <a href="#" id="cancel">Cancel</a><br><br>
+          <a href="#" id="cancel"> - Cancel</a><br><br>
         <% end %>
 
     <div class="row">

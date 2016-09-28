@@ -108,6 +108,10 @@ div.add_video {
   display: inline-block;
 }
 
+ul.list-group.timemarkers {
+  width: 60%;
+}
+
 
 
 
