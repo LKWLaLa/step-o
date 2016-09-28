@@ -45,7 +45,7 @@
       <h4>Videos/Timestamps:</h4>
 
       <ul class="list-group timemarkers">
-        <%@step.timemarkers.each do |tm|%>
+        <%@step.timemarkers.order('video_id').each do |tm|%>
           <% if tm.id #don't include blank list item (result of the build?)%>
             <li class="list-group-item" data-id="<%= tm.id %>">
               <%=tm.video.title%> 

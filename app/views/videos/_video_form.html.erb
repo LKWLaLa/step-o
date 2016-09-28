@@ -24,7 +24,7 @@
   <h3>Steps/Timestamps:</h3>
 
    <ul class="list-group timemarkers">
-        <%@video.timemarkers.each do |tm|%>
+        <%@video.timemarkers.order("step_id").each do |tm|%>
           <% if tm.id #don't include blank list item (result of the build?)%>
             <li class="list-group-item" data-id="<%= tm.id %>">
               <%=tm.step.name%> 
