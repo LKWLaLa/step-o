@@ -1,20 +1,21 @@
 <div class="container">
-<%= render 'errors_messages' %>
+  <%= render 'errors_messages' %>
 
- <h1 style="display: inline-block">Edit Video:</h1>
+  <h1 style="display: inline-block">Edit Video:</h1>
 
   <%= link_to "Cancel / go back", user_video_path(current_user, @video), :class => "pull-right", :style => "padding-top: 2.5em;"%>
 
   <div class="jumbotron">
 
     <div class="youtube_container_edit">
-     <iframe width="854" height="480" src= "http://www.youtube.com/embed/<%=YoutubeID.from(@video.url) %>" frameborder="0" allowfullscreen></iframe>
+       <iframe width="854" height="480" src= "http://www.youtube.com/embed/<%=YoutubeID.from(@video.url) %>" frameborder="0" allowfullscreen></iframe>
     </div>
 
-<%= render 'video_form'%>
+    <%= render 'video_form'%>
 
-<%= link_to "Delete Video", user_video_path(current_user, @video), :method => "delete", :class => "text-danger pull-right", data: { confirm: "Delete this from your library?" } %><br><br>
+    <%= link_to "Delete Video", user_video_path(current_user, @video), :method => "delete", :class => "text-danger pull-right", data: { confirm: "Delete this from your library?" } %>
+    <br><br>
 
 
-</div> <!--jumbotron-->
+  </div> <!--jumbotron-->
 </div> <!--container-->
