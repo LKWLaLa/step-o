@@ -42,26 +42,26 @@
       <br><br>
   </div> <!--row3-->    
 
-      <h4>Videos:</h4>
+      <h4>Videos/Timestamps:</h4>
 
       <ul class="list-group timemarkers">
         <%@step.timemarkers.each do |tm|%>
           <% if tm.id #don't include blank list item (result of the build?)%>
             <li class="list-group-item" data-id="<%= tm.id %>">
               <%=tm.video.title%> (<%=tm.video.year%>) -  at: <%=tm.marker%>
-              <span class="pull-right" style="color: red; cursor: pointer;">X</span>
+              <span class="pull-right x" style="color: red; cursor: pointer;">X</span>
             </li>
           <%end%>
         <%end%>
       </ul>
-      <br><br>
+      <br>
 
       <%= f.fields_for :timemarkers, @step.timemarkers.build do |t| %>
 
        <% if !t.object.persisted? %>
          <div class="dropdown add_video">
               <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Associate another video
+                Add Video/Timestamp
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
