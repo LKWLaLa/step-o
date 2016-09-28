@@ -57,24 +57,25 @@
 
         <div class="timestamp_field">
           <%= t.label :marker, "Timestamp where step occurs (required)*:"%>
-          <%= t.text_field :marker, :class => "timestamp" %><br><br>
+          <%= t.text_field :marker, :class => "timestamp" %>
         </div>
 
-        
+      
         <div class="new_step_fields_group">
-          <%= t.fields_for :step, @video.timemarkers.build.build_step do |s| %>
+          <%= t.fields_for :step, @video.timemarkers.build.build_step do |s| %><br>
             <%= s.label :name, "Step Name:"%>
-            <%= s.text_field :name, :class => "name_field" %><br><br> 
+            <%= s.text_field :name, :class => "name_field" %><br><br>
             <%= s.label :level_of_mastery, "Current level of mastery (1-10):" %>
-          <%= s.number_field :level_of_mastery, max: 10, min: 0, :class =>"lom_field" %>
-           <br><br> 
-        </div> 
+            <%= s.number_field :level_of_mastery, max: 10, min: 0, :class =>"lom_field" %><br><br>
+             <%= s.label :notes, "Notes:"%><br>
+            <%= s.text_area :notes, class: "well col-sm-8" %><br><br> 
+        </div><br><br> 
           
       
          <div class="step_dropdown">
-            <%= s.label :id, "Add a step from your collection:" %>
+            <%= s.label :id, "Step:" %>
             <%= s.collection_select(:id, current_user.steps.order(:name), :id, :name, include_blank: true )%><br>
-         </div><br><br>
+         </div><br>
          
 
           <%= s.hidden_field :user_id, :value => params[:user_id] %>
@@ -82,7 +83,7 @@
 
       <% end %>
 
-      <%= f.submit :class => "btn btn-warning "%>
+      <br><%= f.submit :class => "btn btn-warning "%>
         
       </div><!--row3-->   
      
