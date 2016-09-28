@@ -46,7 +46,7 @@
 
       <ul class="list-group timemarkers">
         <%@step.timemarkers.each do |tm|%>
-          <% if tm.id %><% #don't include the blank timemarker (because of the build?) %>
+          <% if tm.id #don't include blank list item (result of the build?)%>
             <li class="list-group-item" data-id="<%= tm.id %>">
               <%=tm.video.title%> (<%=tm.video.year%>) -  at: <%=tm.marker%>
               <span class="pull-right" style="color: red; cursor: pointer;">X</span>
