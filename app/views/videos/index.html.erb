@@ -29,7 +29,7 @@
       <%@videos.order(:title).each do |video|%>
       <li>
         <div class="panel panel-info">
-          <div class="panel-heading">
+          <div class="panel-heading" style="min-height: 4em;">
             <%= link_to "#{video.title} - #{video.year}", user_video_path(current_user, video)%>
              <span class= "pull-right trigger btn btn-primary" id="trigger" data-id="<%= video.id%>">Show</span><br>
 
