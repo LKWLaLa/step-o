@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
    root 'home#index'
 
-  
+  resources :timemarkers, only: [:destroy]
   resources :videos, only: [:create, :update]
   resources :steps, only: [:create, :update]
  
