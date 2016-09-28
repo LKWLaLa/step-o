@@ -69,7 +69,7 @@
                 <li><a href="#" id="add_new">Add New</a></li>
               </ul>
           </div>
-          <a href="#" id="cancel"> - Cancel</a><br><br>
+          <a href="#" id="cancel">Cancel</a><br><br>
         <% end %>
 
     <div class="row">
@@ -103,11 +103,7 @@
 
           <%= v.hidden_field :user_id, :value => params[:user_id]  %>
         <% end %>
-        <% if t.object.persisted? %>
-         <%= t.label :_destroy, "Remove video", :class => "text-danger" %>
-        <%= t.check_box :_destroy %>
-          <br><br><br>
-        <% end %>
+       
       <% end %>
 
 

@@ -12,6 +12,7 @@ function newVideoListener(){
     $('select').val("");
     $('div.new_video_fields_group').slideDown();
     $('div.timestamp_field').slideDown();
+    $('a#cancel').show();
     event.preventDefault(); //prevent page from scrolling to top on refresh
   })
 }
@@ -25,6 +26,7 @@ function existingVideoListener(){
     $('input.url_field').val("");
     $('div.video_dropdown').slideDown();
     $('div.timestamp_field').slideDown();
+     $('a#cancel').show();
     event.preventDefault();//prevent page from scrolling to top on refresh
   })
 }
@@ -39,6 +41,7 @@ function cancelListener(){
     $('input.title_field').val("");
     $('input.url_field').val("");
     $('select').val("");
+     $('a#cancel').hide();
     event.preventDefault();//prevent page from scrolling to top on refresh
   })
 }

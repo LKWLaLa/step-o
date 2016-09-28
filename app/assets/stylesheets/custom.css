@@ -112,6 +112,11 @@ ul.list-group.timemarkers {
   width: 60%;
 }
 
+a#cancel {
+  padding-left: .5em;
+  display: none;
+}
+
 
 
 
