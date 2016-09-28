@@ -1,7 +1,8 @@
-$(".steps.edit").ready(function(){
+$(".steps").ready(function(){
   newVideoListener();
   existingVideoListener();
   cancelListener();
+  deleteTimemarkerListener();
 });
 
 function newVideoListener(){
@@ -41,3 +42,20 @@ function cancelListener(){
     event.preventDefault();//prevent page from scrolling to top on refresh
   })
 }
+
+function deleteTimemarkerListener(){
+  $('ul.list-group.timemarkers').on('click', 'span.x', function(event){
+    var markerId = $(event.target).parent().data().id;
+
+     if (confirm("Are you sure you want to remove this video/timestamp from this step?")) {
+
+           $.ajax({
+            url: 'http://localhost:3000/timemarkers/' + markerId,
+            method: 'DELETE'
+            }).done(function(data) {
+              $('[data-id=' + markerId + ']').remove();
+           });    
+      }
+     event.preventDefault()   
+  });
+ }
