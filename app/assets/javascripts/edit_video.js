@@ -1,1 +1,3 @@
-edit_video.js
+$(".videos").ready(function(){
+ 
+});
