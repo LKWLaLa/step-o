@@ -1,12 +1,13 @@
 <div class="container">
 <%= render 'errors_messages' %>
-  <h1>New Video:</h1>
+
+  <h1 style="display: inline-block">New Video:</h1>
+
+  <%= link_to "Cancel / go back", user_videos_path(current_user), :class => "pull-right", :style => "padding-top: 2.5em;"%>
+
   <div class="jumbotron">
 
   <%= render 'video_form'%>
-  <br><br>
-
-  <%= link_to "<< Back to all videos", user_videos_path(current_user)%>
 
   </div> <!--jumbotron-->
 </div> <!--container-->

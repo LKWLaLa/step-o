@@ -1,13 +1,13 @@
 <div class="container">
    <%= render 'errors_messages' %>
    
-  <h1>New Step:</h1>
+  <h1 style="display: inline-block">New Step:</h1>
+
+  <%= link_to "Cancel / go back", user_steps_path(current_user), :class => "pull-right", :style => "padding-top: 2.5em;"%>
+
   <div class="jumbotron">
 
   <%= render 'step_form'%>
-  <br><br>
-
-   <%= link_to "<< Back to all steps", user_steps_path(current_user)%>
 
   </div> <!--jumbotron-->
 </div> <!--container-->

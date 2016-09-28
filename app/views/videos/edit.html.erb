@@ -1,6 +1,10 @@
 <div class="container">
 <%= render 'errors_messages' %>
- <h1>Edit Video:</h1>
+
+ <h1 style="display: inline-block">Edit Video:</h1>
+
+  <%= link_to "Cancel / go back", user_video_path(current_user, @video), :class => "pull-right", :style => "padding-top: 2.5em;"%>
+
   <div class="jumbotron">
 
     <div class="youtube_container_edit">
@@ -11,7 +15,6 @@
 
 <%= link_to "Delete Video", user_video_path(current_user, @video), :method => "delete", :class => "text-danger pull-right", data: { confirm: "Delete this from your library?" } %><br><br>
 
-<%= link_to "<< Back to video", user_video_path(current_user, @video)%>
 
 </div> <!--jumbotron-->
 </div> <!--container-->
