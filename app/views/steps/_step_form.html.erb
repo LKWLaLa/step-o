@@ -60,7 +60,6 @@
 
       <%= f.fields_for :timemarkers, @step.timemarkers.build do |t| %>
 
-       <% if !t.object.persisted? %>
          <div class="dropdown add_video">
               <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Add Video/Timestamp
@@ -72,7 +71,7 @@
               </ul>
           </div>
           <a href="#" id="cancel">Cancel</a><br><br>
-        <% end %>
+          
 
     <div class="row">
       <div class="col-sm-12"> 
@@ -94,10 +93,8 @@
         </div> 
            
         <div class="video_dropdown">
-           <% if !v.object.persisted? %>
              <%= v.label :id, "Video:" %>
-              <%= v.collection_select(:id, current_user.videos.order(:title), :id, :title, include_blank: true, :class => "video_library" )%> <br>
-            <% end %>
+              <%= v.collection_select(:id, current_user.videos.order(:title), :id, :title, include_blank: true, :class => "video_library" )%> <br>   
         <div><br><br>
        
       </div>
