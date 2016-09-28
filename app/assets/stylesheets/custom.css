@@ -117,6 +117,14 @@ a#cancel {
   display: none;
 }
 
+.new_step_fields_group {
+  display: none;
+}
+
+.step_dropdown {
+  display: none;
+}
+
 
 
 

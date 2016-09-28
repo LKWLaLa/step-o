@@ -21,59 +21,72 @@
       <%= f.hidden_field :user_id %><br><br>
   </div> <!--row2-->   
 
-  <h3>Associated Steps (add new at bottom of page): </h3><br>
+  <h3>Steps/Timestamps:</h3>
+
+   <ul class="list-group timemarkers">
+        <%@video.timemarkers.each do |tm|%>
+          <% if tm.id #don't include blank list item (result of the build?)%>
+            <li class="list-group-item" data-id="<%= tm.id %>">
+              <%=tm.step.name%> 
+              -  at: <%=tm.marker%>
+              <span class="pull-right x" style="color: red; cursor: pointer;">X</span>
+            </li>
+          <%end%>
+        <%end%>
+      </ul>
+      <br>
 
  
-   <%= f.fields_for :timemarkers do |t| %>
+   <%= f.fields_for :timemarkers, @video.timemarkers.build do |t| %>
   
-   <% if !t.object.persisted? %>
-       <h3>Add a step:</h3><br><br>
-    <% end %>
+   <div class="dropdown add_step">
+        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Add Step/Timestamp
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><a href="#" id="from_library">From my library</a></li>
+          <li><a href="#" id="add_new">Add New</a></li>
+        </ul>
+    </div>
+    <a href="#" id="cancel">Cancel</a><br><br>
+
         
     <div class="row">
       <div class="col-sm-4">
 
-        <%= t.label :marker, "Timestamp:"%>
-        <%= t.text_field :marker %><br>
-
-
-        <%= t.fields_for :step do |s| %>
-          <%= s.label :name, "Step Name:"%>
-          <%= s.text_field :name %>
+        <div class="timestamp_field">
+          <%= t.label :marker, "Timestamp where step occurs (required)*:"%>
+          <%= t.text_field :marker, :class => "timestamp" %><br><br>
         </div>
+
+        
+        <div class="new_step_fields_group">
+          <%= t.fields_for :step, @video.timemarkers.build.build_step do |s| %>
+            <%= s.label :name, "Step Name:"%>
+            <%= s.text_field :name, :class => "name_field" %><br><br> 
+            <%= s.label :level_of_mastery, "Current level of mastery (1-10):" %>
+          <%= s.number_field :level_of_mastery, max: 10, min: 0, :class =>"lom_field" %>
+           <br><br> 
+        </div> 
           
-        <div class="col-sm-8">
-         <% if !s.object.persisted? %>
+      
+         <div class="step_dropdown">
             <%= s.label :id, "Add a step from your collection:" %>
-            <%= s.collection_select(:id, current_user.steps.order(:name), :id, :name, include_blank: true )%>  - (Or a new step name below):<br>
-          <% end %>
+            <%= s.collection_select(:id, current_user.steps.order(:name), :id, :name, include_blank: true )%><br>
+         </div><br><br>
          
-          <%= s.label :level_of_mastery, "Current level of mastery (1-10):" %>
-          <%= s.number_field :level_of_mastery, max: 10, min: 0 %>
 
-          <%= s.hidden_field :user_id, :value => params[:user_id] %><br>
+          <%= s.hidden_field :user_id, :value => params[:user_id] %>
         <% end %>
-        </div>
 
-        <div class="col-sm-4">  
-        <% if t.object.persisted? %>
-          <%= t.label :_destroy, "Remove step", :class => "text-danger" %>
-          <%= t.check_box :_destroy %> 
-          <br><br><br><br>
-        </div>
-        <% end %>
-      </div><br><!--row3-->   
       <% end %>
+
+      <%= f.submit :class => "btn btn-warning "%>
+        
+      </div><!--row3-->   
      
-
-
-     <div class="row">   
-       <div class="col-sm-8">  
-          <br><br><%= f.submit :class => "btn btn-warning "%>
-      </div>     
-     </div> <!--row4-->   
-
-    <%end%>
+<%end%>
 
 
 
