@@ -65,7 +65,7 @@
 
         <div class="timestamp_field">
           <%= t.label :marker, "Timestamp where step occurs (required)*:"%>
-          <%= t.text_field :marker %><br><br>
+          <%= t.text_field :marker, :class => "timestamp" %><br><br>
         </div>
 
         <div class="new_video_fields_group">
@@ -82,7 +82,7 @@
         <div class="video_dropdown">
            <% if !v.object.persisted? %>
              <%= v.label :id, "Video:" %>
-              <%= v.collection_select(:id, current_user.videos.order(:title), :id, :title, include_blank: true )%> <br>
+              <%= v.collection_select(:id, current_user.videos.order(:title), :id, :title, include_blank: true, :class => "video_library" )%> <br>
             <% end %>
         <div><br><br>
        
