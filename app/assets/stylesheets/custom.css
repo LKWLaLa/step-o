@@ -96,6 +96,10 @@ span#style_delete {
   display: none;
 }
 
+.name_field {
+  width: 35%;
+}
+
 .new_video_fields_group {
   display: none;
 }
@@ -105,6 +109,10 @@ span#style_delete {
 }
 
 div.add_video {
+  display: inline-block;
+}
+
+div.add_step {
   display: inline-block;
 }
 
