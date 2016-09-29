@@ -74,23 +74,7 @@
       
       <br><br>
 
-      <div class="col-sm-12 well">Notes:<br> {{notes}}</div>
-
-      <h3>My steps:</h3>
-
-        <ol>
-         {{#each timemarkers}}
-            <li><h4><a href="/users/{{step.user_id}}/steps/{{step.id}}">{{step.name}}</a>
-                 -  at: {{marker}}</h4>
-            Current level of mastery: {{step.level_of_mastery}}
-            </li><br>
-          {{/each}}
-        </ol>
-      
-
-      <button class="btn btn-warning">
-        <a style="color: white; text-decoration: none;" href="/users/{{user_id}}/videos/{{id}}/edit">Edit Video</a>
-      </button>
+      <div class="col-sm-12 well">Notes:<br> {{notes}}</div><br>
 
 </script>
 
