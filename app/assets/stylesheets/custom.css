@@ -1,3 +1,10 @@
+html body{ font-size: 190%;} 
+
+.nav li{ font-size: 115%;}
+
+a.navbar-brand{font-size: 150%}
+
+
 #landing {
   background-image: url('/assets/cover.jpg');
   background-size: cover;
