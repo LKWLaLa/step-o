@@ -133,6 +133,18 @@ a#cancel {
   display: none;
 }
 
+ol#video-steps li {
+  font-size: 1.1em;
+  color: black;
+}
+
+ol#step-videos li {
+  color: black;
+  font-size: 1.1em;
+}
+
+
+
 
 
 

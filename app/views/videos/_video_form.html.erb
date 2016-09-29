@@ -62,14 +62,14 @@
 
       
         <div class="new_step_fields_group">
-          <%= t.fields_for :step, @video.timemarkers.build.build_step do |s| %><br>
+          <%= t.fields_for :step, @video.timemarkers.build.build_step do |s| %>
             <%= s.label :name, "Step Name:"%>
-            <%= s.text_field :name, :class => "name_field" %><br><br>
+            <%= s.text_field :name, :class => "name_field" %><br>
             <%= s.label :level_of_mastery, "Current level of mastery (1-10):" %>
             <%= s.number_field :level_of_mastery, max: 10, min: 0, :class =>"lom_field" %><br><br>
              <%= s.label :notes, "Notes:"%><br>
             <%= s.text_area :notes, class: "well col-sm-8" %><br><br> 
-        </div><br><br> 
+        </div><br> 
           
       
          <div class="step_dropdown">
