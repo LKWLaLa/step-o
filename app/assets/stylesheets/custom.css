@@ -143,6 +143,14 @@ ol#step-videos li {
   font-size: 1.1em;
 }
 
+li.copyright {
+  color: black;
+  text-shadow: 1px 1px 1px white;
+  right: 0;
+  position: relative;
+  padding-top: 1em;
+}
+
 
 
 
