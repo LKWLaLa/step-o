@@ -14,8 +14,6 @@
     <%= submit_tag "Search" %>
   <% end %>
 
-  <%= page_entries_info @videos %><br>
-  <%= paginate @videos %>
 
   <h2 class="heading">My Videos:</h2>
 
@@ -62,6 +60,11 @@
   <%end%>
   </ul>
 </div> <!--container-->
+
+<div class="text-center">
+     <%= paginate @videos %> <br>
+     <%= page_entries_info @videos %>
+<div>
 
 
 

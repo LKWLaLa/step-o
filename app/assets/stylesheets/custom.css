@@ -161,7 +161,12 @@ li.copyright {
 ul.bullet-free {
   list-style-type: none; 
   -webkit-padding-start: 0px;
+}
 
+div.text-center {
+  margin-top: 5em;
+  margin-bottom: 8em;
+  position: relative;
 }
 
 
