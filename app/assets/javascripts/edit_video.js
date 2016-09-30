@@ -51,7 +51,7 @@ function deleteTimemarkerListener(){
      if (confirm("Are you sure you want to remove this step/timestamp from this video?")) {
 
            $.ajax({
-            url: 'http://localhost:3000/timemarkers/' + markerId,
+            url: 'https://step-o.herokuapp.com/timemarkers/' + markerId,
             method: 'DELETE'
             }).done(function(data) {
               $('[data-id=' + markerId + ']').remove();

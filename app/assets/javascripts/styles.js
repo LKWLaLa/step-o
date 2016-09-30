@@ -30,7 +30,7 @@ function addStyleListener(){
    
 
     $.ajax({
-    url: 'http://localhost:3000/users/' + user +'/styles',
+    url: 'https://step-o.herokuapp.com/users/' + user +'/styles',
     method: 'POST',
     data: {
       name: newStyle,     
@@ -52,7 +52,7 @@ function addStyleListener(){
      if (confirm("Are you sure you want to delete this style?")) {
 
            $.ajax({
-            url: 'http://localhost:3000/users/' + user + '/styles/' + styleId,
+            url: 'https://step-o.herokuapp.com/users/' + user + '/styles/' + styleId,
             method: 'DELETE'
             }).done(function(data) {
               $('[data-id=' + styleId + ']').next('br').remove();

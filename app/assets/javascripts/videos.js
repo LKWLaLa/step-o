@@ -37,7 +37,7 @@ function Video(attributes){
     var videoId = $(event.target).data().id;
 
     $.ajax({
-      url: 'http://localhost:3000/users/' + user + '/videos/' + videoId,
+      url: 'https://step-o.herokuapp.com/users/' + user + '/videos/' + videoId,
       method: 'GET',
       dataType: 'json'
 
