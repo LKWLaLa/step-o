@@ -36,7 +36,7 @@ To start up a local server, run `rails s` and navigate to localhost:3000 in your
 
 ###License:
 
-Copyright [2016] [Lindsey Wells]
+Copyright (c) 2016 Lindsey Wells
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
