@@ -54,7 +54,7 @@ function Video(attributes){
 
               $(this).data( 'old_html', indexHTML );
               $(this).find('.trigger').attr("class","revert pull-right btn btn-primary").text("Close");
-              $(this).find('iframe').attr("src", "http://www.youtube.com/embed/" + YouTubeGetID(videoObject.url));
+              $(this).find('iframe').attr("src", "https://www.youtube.com/embed/" + YouTubeGetID(videoObject.url));
             };
          });      
       });
