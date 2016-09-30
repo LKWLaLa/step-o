@@ -8,8 +8,10 @@ a.navbar-brand{font-size: 150%}
 #landing {
   background-image: url('/assets/cover.jpg');
   background-size: cover;
+  background-attachment: fixed;
   color: white;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
+
 }
 
 #stripes {
@@ -60,6 +62,21 @@ a.navbar-brand{font-size: 150%}
   padding-bottom: .5em;
   color: black;
   text-shadow: 1px 1px 1px white);
+}
+
+@media (max-width: 550px) {
+    h2.heading {
+      padding-top:1.5em;
+    }
+    form.dropdown-toggle-default.pull-right{
+      padding-bottom: 1.5em;
+      margin-right: 35%;
+      padding-top: .5em;
+    }
+
+    #search-form{
+      padding-bottom: 1.5em;
+    }
 }
 
 button > a {
