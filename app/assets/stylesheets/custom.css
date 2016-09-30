@@ -61,7 +61,7 @@ a.navbar-brand{font-size: 150%}
   text-align: left;
   padding-bottom: .5em;
   color: black;
-  text-shadow: 1px 1px 1px white);
+  text-shadow: 1px 1px 1px white;
 }
 
 @media (max-width: 550px) {
