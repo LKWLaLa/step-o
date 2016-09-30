@@ -11,7 +11,7 @@
       <!--CSRF addition-->
        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
        <!--End CSRF addition-->
-        <button id="style_button" class="btn btn-info pull-right">Add</button><br><br>
+        <button id="style_button" class="btn btn-info">Add</button><br><br>
 
     <div id="styles_list" class="row col-sm-6">
       <% current_user.styles.order(:name).each do |style| %>
