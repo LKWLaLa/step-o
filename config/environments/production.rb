@@ -75,13 +75,12 @@ config.action_mailer.raise_delivery_errors = true
 config.action_mailer.default :charset => "utf-8"
 
 config.action_mailer.smtp_settings = {
-address: "smtp.gmail.com",
-port: 587,
-domain: ENV["GMAIL_DOMAIN"],
+address: "smtp.sendgrid.net",
+port: "587",
+domain: 'heroku.com',
 authentication: "plain",
 enable_starttls_auto: true,
-user_name: ENV["GMAIL_USERNAME"],
-password: ENV["GMAIL_PASSWORD"]
+api_key: ENV['SENDGRID_API_KEY']
 }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to

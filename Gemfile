@@ -33,6 +33,7 @@ gem 'omniauth-facebook'
 gem 'active_model_serializers'
 gem 'kaminari'
 gem 'rails_12factor', group: :production
+gem 'sendgrid-ruby'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
