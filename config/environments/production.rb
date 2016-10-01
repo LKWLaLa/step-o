@@ -80,9 +80,7 @@ port: "587",
 domain: 'heroku.com',
 authentication: "plain",
 enable_starttls_auto: true,
-api_key: ENV['SENDGRID_API_KEY'],
-user_name: ENV['SENDGRID_USERNAME'],
-password:  ENV['SENDGRID_PASSWORD']
+api_key: ENV['SENDGRID_API_KEY']
 }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
