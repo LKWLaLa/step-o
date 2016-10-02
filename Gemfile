@@ -38,7 +38,7 @@ gem 'sendgrid-ruby'
 #Use puma as production webserver
 gem 'puma', group: :production
 #Use rack timeout with puma
-gem "rack-timeout", group: :production
+gem "rack-timeout"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
