@@ -23,3 +23,4 @@ test:
 production:
   <<: *default
   database: step-o_production
+  pool: <%= ENV['RAILS_MAX_THREADS'] %>
