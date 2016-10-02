@@ -16,13 +16,13 @@
       <h3>Steps:</h3>
         <ol class="list-group" id="video-steps">
           <%@video.steps.uniq.each do |step|%>
-              <li class="list-group-item">
+              <li class="list-group-item" id="step-list">
                   <%= link_to "#{step.name}", user_step_path(current_user, step)%>
-                  -  at: <%= Timemarker.filter_by_instance(step.id, @video.id)%>
-                  <span class="pull-right">Current level of mastery: <%=step.level_of_mastery%></span><br>
+                  -  at: <%= Timemarker.filter_by_instance(step.id, @video.id)%><br>
                   <%step.styles.each do |style|%>
-                      <span class="label label-success" style="margin:.3em;"><%=style.name%></span>
-                  <%end%>                 
+                      <span class="label label-success" id="step-tags"><%=style.name%></span>
+                  <%end%> 
+                  <span class="pull-right">Current level of mastery: <%=step.level_of_mastery%></span><br>                
               </li>
           <%end%>
         </ol><br>

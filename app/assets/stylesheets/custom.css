@@ -77,6 +77,14 @@ a.navbar-brand{font-size: 150%}
     #search-form{
       padding-bottom: 1.5em;
     }
+
+    li.list-group-item#step-list{
+      min-height: 8em;
+      overflow:scroll;
+    }
+    span#step-tags {
+      line-height: 3em;
+    }
 }
 
 button > a {
@@ -189,6 +197,8 @@ div.text-center {
 #style_input{
   margin-right: 1em;
 }
+
+
 
 
 
