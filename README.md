@@ -33,6 +33,10 @@ bundle exec rake db:seed
 
 To start up a local server, run `rails s` and navigate to localhost:3000 in your web browser.
 
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/LKWLaLa/step-o. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
 
 ###License:
 
