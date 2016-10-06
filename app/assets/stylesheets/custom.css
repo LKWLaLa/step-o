@@ -198,6 +198,17 @@ div.text-center {
   margin-right: 1em;
 }
 
+div.alert.alert-warning {
+  width: 60%;
+  margin: auto; 
+  text-align: center; 
+  font-size: 95%;
+}
+
+ div.intro-message#step-o {
+  padding-bottom: 0;
+}
+
 
 
 
