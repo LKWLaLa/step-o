@@ -85,6 +85,10 @@ a.navbar-brand{font-size: 150%}
     span#step-tags {
       line-height: 3em;
     }
+
+    h2#welcome {
+      font-size: 240%;
+    }
 }
 
 button > a {
@@ -199,8 +203,6 @@ div.text-center {
 }
 
 div.alert.alert-warning {
-  width: 90%;
-  margin: auto; 
   text-align: center; 
   font-size: 95%;
 }
@@ -208,6 +210,7 @@ div.alert.alert-warning {
  div.intro-message#step-o {
   padding-bottom: 0;
 }
+
 
 
 
