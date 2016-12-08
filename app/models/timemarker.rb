@@ -6,17 +6,13 @@ class Timemarker < ActiveRecord::Base
   validates :marker, presence: true
 
   def step_attributes=(attributes)
-    if attributes[:id].present? #allow for nested update, rather than only create/find and associate.
+    if attributes[:id].present? 
       existing = Step.find_by(id: attributes[:id])
-      if self.step_id == existing.id #just update the step, if already associated.
-         existing.update(attributes)
-      else
-         self.step = existing
-      end
+      self.step = existing
     else
       if attributes[:name].present? 
-         new_join = Step.find_or_create_by(attributes)# will still protect against duplicates being made. (should I only search the current_user here?)
-        self.step = new_join 
+        new_step = Step.find_or_create_by(attributes)#(should I only search the current_user here?)
+        self.step = new_step 
       end
     end
   end 
@@ -25,15 +21,11 @@ class Timemarker < ActiveRecord::Base
   def video_attributes=(attributes)
     if attributes[:id].present?
       existing = Video.find_by(id: attributes[:id])
-      if self.video_id == existing.id
-        existing.update(attributes)
-      else
-        self.video = existing
-      end
+      self.video = existing
     else
       if attributes[:url].present? && attributes[:title].present?
-        new_join = Video.find_or_create_by(attributes)
-        self.video = new_join 
+        new_video = Video.find_or_create_by(attributes)
+        self.video = new_video
       end
     end
   end
