@@ -11,8 +11,9 @@ class Timemarker < ActiveRecord::Base
       self.step = existing
     else
       if attributes[:name].present? 
-        new_step = Step.find_or_create_by(attributes)#(should I only search the current_user here?)
-        self.step = new_step 
+        new_step = (Step.find_by(user_id: attributes[:user_id], 
+          name: attributes[:name]) || Step.create(attributes))
+        self.step = new_step
       end
     end
   end 
@@ -24,7 +25,8 @@ class Timemarker < ActiveRecord::Base
       self.video = existing
     else
       if attributes[:url].present? && attributes[:title].present?
-        new_video = Video.find_or_create_by(attributes)
+        new_video = (Video.find_by(user_id: attributes[:user_id], 
+          title: attributes[:title]) || Video.create(attributes))
         self.video = new_video
       end
     end
