@@ -27,7 +27,7 @@ function existingVideoListener(){
     $('div.video_dropdown').slideDown();
     $('div.timestamp_field').slideDown();
      $('a#cancel').show();
-    event.preventDefault();//prevent page from scrolling to top on refresh
+    event.preventDefault();
   })
 }
 
@@ -42,7 +42,7 @@ function cancelListener(){
     $('input.url_field').val("");
     $('select').val("");
      $('a#cancel').hide();
-    event.preventDefault();//prevent page from scrolling to top on refresh
+    event.preventDefault();
   })
 }
 
